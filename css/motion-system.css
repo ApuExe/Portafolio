@@ -1,0 +1,450 @@
+/* ============================================================
+   V2.12.1 — MOTION SYSTEM
+   Purpose-driven motion layered on top of the canonical design system.
+   Native scroll remains untouched. Lines communicate structure, not decoration.
+   ============================================================ */
+
+:root {
+  --line-trace-light: rgba(15,95,245,.92);
+  --line-trace-dark: rgba(134,160,255,.92);
+  --line-trace-neutral: rgba(9,10,15,.76);
+}
+
+/* ---------- Structural line choreography ---------- */
+.motion-line-host {
+  /* Marker only. Positioning context is added only to hosts that are static. */
+}
+
+.motion-line-context {
+  position: relative;
+}
+
+.motion-line {
+  position: absolute;
+  z-index: 6;
+  display: block;
+  pointer-events: none;
+  background: var(--line-trace-light);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.motion-line--top,
+.motion-line--bottom {
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.motion-line--top { top: -1px; }
+.motion-line--bottom { bottom: -1px; }
+
+.motion-line--left,
+.motion-line--right {
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: center top;
+}
+
+.motion-line--left { left: -1px; }
+.motion-line--right { right: -1px; }
+
+.exp-case-dark .motion-line,
+.system-section .motion-line,
+.contact-section .motion-line {
+  background: var(--line-trace-dark);
+}
+
+.motion-line.is-tracing.motion-line--top,
+.motion-line.is-tracing.motion-line--bottom {
+  animation: lineTraceX var(--motion-line) var(--ease-out) forwards;
+}
+
+.motion-line.is-tracing.motion-line--left,
+.motion-line.is-tracing.motion-line--right {
+  animation: lineTraceY var(--motion-line) var(--ease-out) forwards;
+}
+
+@keyframes lineTraceX {
+  0% { transform: scaleX(0); opacity: 0; }
+  12% { opacity: .92; }
+  72% { transform: scaleX(1); opacity: .72; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes lineTraceY {
+  0% { transform: scaleY(0); opacity: 0; }
+  12% { opacity: .82; }
+  72% { transform: scaleY(1); opacity: .62; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* A project row gets an interaction trace only while the user engages with it. */
+.project-row {
+  position: relative;
+  isolation: isolate;
+}
+
+.project-row::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  z-index: 7;
+  height: 2px;
+  background: var(--ds-signal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-ui) var(--ease-out);
+  pointer-events: none;
+}
+
+.project-row:hover::after,
+.project-row:focus-within::after,
+.project-row.lens-match::after {
+  transform: scaleX(1);
+}
+
+/* Discovery reward lives in the document itself, not only in the floating console. */
+.project-no {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.project-row.is-discovered .project-no::after {
+  content: "✓";
+  color: var(--ds-signal);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+/* ---------- Navigation line language ---------- */
+.desktop-nav a {
+  position: relative;
+  padding-block: 8px;
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-hover) var(--ease-out);
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a:focus-visible::after,
+.desktop-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Lens interaction: state is never color-only ---------- */
+.lens-switch button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 12px;
+  transition:
+    color var(--motion-hover) var(--ease-out),
+    background-color var(--motion-hover) var(--ease-out),
+    border-color var(--motion-hover) var(--ease-out),
+    transform var(--motion-press) var(--ease-out);
+}
+
+.lens-switch button::after {
+  content: attr(data-state-label);
+  min-width: 10px;
+  color: currentColor;
+  font-size: 9px;
+  text-align: right;
+}
+
+.lens-switch button:active {
+  transform: translateY(1px);
+}
+
+/* ---------- Purposeful interactive polish ---------- */
+.project-link {
+  transition:
+    padding-left var(--motion-hover) var(--ease-out),
+    color var(--motion-hover) var(--ease-out);
+}
+
+.project-row .project-title h3,
+.project-row .project-year,
+.project-role span {
+  transition:
+    transform var(--motion-hover) var(--ease-out),
+    color var(--motion-hover) var(--ease-out),
+    background-color var(--motion-hover) var(--ease-out),
+    border-color var(--motion-hover) var(--ease-out),
+    opacity var(--motion-hover) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-row:hover .project-role span {
+    border-color: color-mix(in srgb, var(--ds-signal) 54%, transparent);
+    background: color-mix(in srgb, var(--ds-signal-soft) 64%, transparent);
+  }
+}
+
+/* Numerical evidence should read like evidence, not ordinary paragraph text. */
+.amp-metrics strong {
+  font-variant-numeric: tabular-nums;
+  min-width: 5ch;
+}
+
+.amp-metrics article {
+  position: relative;
+  overflow: hidden;
+}
+
+.amp-metrics article::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--ds-signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-editorial) var(--ease-out);
+}
+
+.amp-metrics article.is-metric-seen::after {
+  transform: scaleX(var(--metric-ratio, 1));
+}
+
+/* Editorial evidence gains a tiny amount of depth, never parallax. */
+.exp-product-shot,
+.exp-evidence figure,
+.prod-social-images figure,
+.sunafil-documentary-main,
+.sunafil-documentary-grid figure {
+  transform-origin: center;
+  transition:
+    transform var(--motion-ui) var(--ease-out),
+    filter var(--motion-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .exp-product-shot:hover,
+  .exp-evidence figure:hover,
+  .prod-social-images figure:hover,
+  .sunafil-documentary-main:hover,
+  .sunafil-documentary-grid figure:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* The fixed explore affordance should feel alive without pulsing forever. */
+.explore-console-toggle {
+  transition:
+    transform var(--motion-hover) var(--ease-out),
+    border-color var(--motion-hover) var(--ease-out),
+    background-color var(--motion-hover) var(--ease-out),
+    box-shadow var(--motion-hover) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .explore-console-toggle:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--ds-signal) 52%, transparent);
+    box-shadow: 0 16px 34px rgba(8,15,28,.11);
+  }
+}
+
+
+/* Completion is a rare reward, not an endless attention grab. */
+@media (prefers-reduced-motion: no-preference) {
+  .explore-console.is-complete .explore-console-toggle::before {
+    animation: signalPulse 900ms var(--ease-out) 2 !important;
+  }
+}
+
+/* Existing interactive components inherit the same motion contract. */
+.system-node {
+  transition:
+    opacity var(--motion-ui) var(--ease-out),
+    transform var(--motion-ui) var(--ease-out),
+    border-color var(--motion-hover) var(--ease-out),
+    background-color var(--motion-hover) var(--ease-out);
+}
+
+.system-engine-orbit i,
+.profile-map-progress b {
+  transition-duration: var(--motion-ui);
+  transition-timing-function: var(--ease-out);
+}
+
+/* Mi Sistema keeps its existing composition; only its structural diagonal is revealed. */
+.system-engine-stage::after {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--motion-major) var(--ease-out), opacity var(--motion-ui) var(--ease-out);
+}
+
+.system-engine.is-line-active .system-engine-stage::after {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .motion-line {
+    display: none !important;
+  }
+
+  .project-row::after,
+  .desktop-nav a::after,
+  .amp-metrics article::after {
+    transition: none !important;
+  }
+
+  .project-row:hover::after,
+  .project-row:focus-within::after,
+  .project-row.lens-match::after,
+  .desktop-nav a:hover::after,
+  .desktop-nav a:focus-visible::after,
+  .desktop-nav a[aria-current="page"]::after,
+  .amp-metrics article.is-metric-seen::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 820px) {
+  /* Keep structural motion readable on compact layouts. Vertical traces are
+     omitted because many desktop columns become stacked rows here. */
+  .motion-line--left,
+  .motion-line--right {
+    display: none;
+  }
+
+  .project-row::after {
+    height: 1px;
+  }
+}
+
+/* ============================================================
+   V2.13 LITE — LOCAL STORY LINES
+   Chapter-specific motifs. They draw once but remain useful without motion.
+   ============================================================ */
+.story-line {
+  width: var(--page);
+  max-width: var(--ds-page-max, 1440px);
+  margin: 18px auto 0;
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.story-line span {
+  flex: 0 0 auto;
+  opacity: .5;
+  transition: opacity var(--motion-ui) var(--ease-out), color var(--motion-ui) var(--ease-out);
+}
+
+.story-line i {
+  position: relative;
+  flex: 1 1 44px;
+  min-width: 24px;
+  height: 1px;
+  overflow: hidden;
+  background: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.story-line i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-line) var(--ease-out);
+}
+
+.story-line.is-traced span { opacity: 1; }
+.story-line.is-traced i::after { transform: scaleX(1); }
+
+.story-line--architecture span:nth-of-type(2),
+.story-line--operation span:nth-of-type(3),
+.story-line--editorial span:nth-of-type(2) {
+  color: var(--signal);
+}
+
+.story-line--documentary {
+  color: #666d7b;
+}
+
+.story-line--documentary i::after {
+  background: #9095a2;
+}
+
+@media (max-width: 760px) {
+  .story-line {
+    gap: 7px;
+    overflow: hidden;
+    font-size: 7px;
+  }
+  .story-line i { min-width: 12px; }
+  .story-line--operation span:nth-of-type(2),
+  .story-line--operation span:nth-of-type(4) { display: none; }
+  .story-line--operation i:nth-of-type(2),
+  .story-line--operation i:nth-of-type(4) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-line span { opacity: 1; }
+  .story-line i::after { transform: scaleX(1); transition: none; }
+}
+
+/* V2.13 case-specific tactile polish. */
+#case-tkoh .exp-product-shot,
+#case-tkoh .exp-evidence figure {
+  overflow: clip;
+}
+
+#case-tkoh .exp-annotations > div {
+  transition: border-color var(--motion-hover) var(--ease-out), background-color var(--motion-hover) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #case-tkoh .exp-annotations > div:hover {
+    border-color: color-mix(in srgb, var(--signal) 48%, transparent);
+    background: rgba(255,255,255,.035);
+  }
+}
+
+#case-20prod .prod-archive-row {
+  transform-origin: left center;
+}
+
+#case-visual .sunafil-documentary-main figcaption,
+#case-visual .sunafil-documentary-grid figcaption {
+  transition: opacity var(--motion-ui) var(--ease-out), transform var(--motion-ui) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #case-visual figure:hover figcaption {
+    transform: translateY(-2px);
+  }
+}

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Luis Sabrera — Diseñador de Producto UX/UI en Lima, Perú. Comunicación × Producto × Datos." name="description"/>
+<meta content="Luis Alberto Sabrera Espinoza" name="author"/>
+<meta content="#f4f5f8" name="theme-color"/>
+<meta content="website" property="og:type"/>
+<meta content="es_PE" property="og:locale"/>
+<meta content="Luis Sabrera — Diseñador de Producto UX/UI" property="og:title"/>
+<meta content="Portafolio de Luis Sabrera: producto, UX/UI, sistemas, marketing y analítica desde Lima, Perú." property="og:description"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Luis Sabrera — Diseñador de Producto UX/UI" name="twitter:title"/>
+<meta content="Producto, UX/UI, sistemas, marketing y analítica desde Lima, Perú." name="twitter:description"/>
+<link href="assets/images/favicon-ls-v213-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/images/favicon-ls-v213-64.png" rel="icon" sizes="64x64" type="image/png"/>
+<link href="assets/images/apple-touch-icon-ls-v213.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="favicon.ico" rel="shortcut icon"/>
+<title>Luis Sabrera — Diseñador de Producto UX/UI</title>
+<!-- Same visual fonts, discovered earlier and without CSS @import -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/stability.css" rel="stylesheet"/>
+<link href="css/interactive.css" rel="stylesheet"/>
+<link href="css/design-system.css" rel="stylesheet"/>
+<link href="css/motion-system.css" rel="stylesheet"/>
+<link href="css/experience-intro.css" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script defer="" src="js/experience-intro.js"></script>
+<script defer="" src="js/app.js"></script>
+<script defer="" src="js/motion-system.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar" data-topbar="">
+<a aria-label="Ir al inicio" class="identity" href="#top">
+<span class="identity-mark">L/S</span>
+<span class="identity-meta">Diseñador de Producto<br/>Lima, Perú</span>
+</a>
+<nav aria-label="Navegación principal" class="desktop-nav" data-desktop-nav="">
+<a href="#work">Trabajo</a>
+<a href="#system">Sistema</a>
+<a href="#about">Perfil</a>
+<a href="#contact">Contacto</a>
+</nav>
+<div aria-hidden="true" class="topbar-status">
+<span class="status-dot"></span>
+<span>Disponible para Producto / UX</span>
+</div>
+<button aria-controls="mobile-menu" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+      Menú
+    </button>
+</header>
+<div class="mobile-menu" data-mobile-menu="" hidden="" id="mobile-menu">
+<nav aria-label="Navegación móvil" data-mobile-nav="">
+<a href="#work">01 Trabajo</a>
+<a href="#system">02 Sistema</a>
+<a href="#about">03 Perfil</a>
+<a href="#contact">04 Contacto</a>
+</nav>
+</div>
+<div aria-hidden="true" class="scroll-progress"><span data-progress=""></span></div>
+<div aria-live="polite" class="sr-only" data-live-status=""></div>
+<aside aria-label="Exploración interactiva del portafolio" class="explore-console" data-explore-console="">
+<button aria-controls="explore-panel" aria-expanded="false" class="explore-console-toggle" data-explore-toggle="" type="button">
+<span>EXPLORA MI CV</span>
+<strong data-discovery-count="">0/4</strong>
+</button>
+<div class="explore-panel" data-explore-panel="" hidden="" id="explore-panel">
+<div class="explore-panel-head">
+<div><span>LECTURA ACTIVA</span><strong>Lee el CV desde otra lente.</strong></div>
+<button aria-label="Cerrar explorador" data-explore-close="" type="button">×</button>
+</div>
+<div aria-label="Filtrar por lente profesional" class="lens-switch" role="group">
+<button aria-pressed="true" class="is-active" data-lens-filter="all" type="button">TODO</button>
+<button aria-pressed="false" data-lens-filter="producto" type="button">PRODUCTO</button>
+<button aria-pressed="false" data-lens-filter="comunicacion" type="button">COMUNICACIÓN</button>
+<button aria-pressed="false" data-lens-filter="datos" type="button">DATOS</button>
+</div>
+<div class="discovery-summary">
+<span>SEÑALES DESCUBIERTAS</span>
+<div aria-hidden="true" class="discovery-dots"><i></i><i></i><i></i><i></i></div>
+</div>
+<ol class="discovery-list">
+<li data-discovery-item="case-tkoh"><a href="#case-tkoh"><span>01</span><strong>TKOH</strong><em>Producto</em></a></li>
+<li data-discovery-item="case-amp"><a href="#case-amp"><span>02</span><strong>Amazon</strong><em>Datos + operación</em></a></li>
+<li data-discovery-item="case-20prod"><a href="#case-20prod"><span>03</span><strong>20 Prod.</strong><em>Marca + UX</em></a></li>
+<li data-discovery-item="case-visual"><a href="#case-visual"><span>04</span><strong>SUNAFIL</strong><em>Comunicación</em></a></li>
+</ol>
+<a class="profile-map-trigger" data-profile-map-open="" href="#about">VER PERFIL COMPLETO <span>↘</span></a>
+</div>
+</aside>
+<div aria-live="polite" class="discovery-toast" data-discovery-toast="" hidden="" role="status">
+<span data-toast-kicker="">SEÑAL DESCUBIERTA</span>
+<strong data-toast-title=""></strong>
+<p data-toast-copy=""></p>
+</div>
+<dialog aria-labelledby="profile-map-title" class="profile-map-dialog" data-profile-map="">
+<div class="profile-map-shell">
+<div class="profile-map-head">
+<div><span>MAPA DEL PERFIL</span><h2 id="profile-map-title">Tres lentes. Una misma forma de resolver.</h2></div>
+<button aria-label="Cerrar mapa del perfil" data-profile-map-close="" type="button">×</button>
+</div>
+<div class="profile-map-progress"><span data-map-progress="">0 de 4 experiencias recorridas</span><i><b data-map-progress-bar=""></b></i></div>
+<div class="profile-map-grid">
+<article data-map-lens="comunicacion"><span>01 / COMUNICACIÓN</span><strong>Entender</strong><p>Contexto, lenguaje, actores y señales antes de proponer una interfaz.</p><small>SUNAFIL · 20 PROD. · AMAZON</small></article>
+<article data-map-lens="producto"><span>02 / PRODUCTO</span><strong>Estructurar</strong><p>Jerarquía, flujos, arquitectura y sistemas que puedan crecer sin perder claridad.</p><small>TKOH · 20 PROD.</small></article>
+<article data-map-lens="datos"><span>03 / DATOS</span><strong>Decidir</strong><p>Métricas, comportamiento y operación para saber qué mantener, priorizar o cambiar.</p><small>AMAZON · TKOH</small></article>
+</div>
+<div class="profile-map-footer">
+<p>El mapa no reemplaza el CV: resume la intersección que aparece mientras lo recorres.</p>
+<a href="mailto:luis.sabrera@studios-tkoh.online?subject=Contacto%20desde%20tu%20portafolio">Hablemos por correo ↗</a>
+</div>
+</div>
+</dialog>
+<main id="main">
+<section class="hero" id="top">
+<div aria-hidden="true" class="ambient-field ambient-field-hero">
+<div class="ambient-slot ambient-hero-orbit" data-ambient-motion="" data-from-y="-7" data-rotate="1.2" data-to-y="9">
+<img alt="" class="ambient-asset" decoding="async" fetchpriority="low" height="1254" src="assets/backgrounds/ambient-orbit.webp" width="1254"/>
+</div>
+<div class="ambient-slot ambient-hero-wire" data-ambient-motion="" data-from-y="5" data-rotate="-0.8" data-to-y="-6">
+<img alt="" class="ambient-asset" decoding="async" fetchpriority="low" height="1254" src="assets/backgrounds/ambient-wireframe.webp" width="1254"/>
+</div>
+</div>
+<div class="experience-intro" data-experience-intro aria-hidden="true">
+<div class="experience-intro__signals">
+<span data-intro-signal data-signal-role="communication">COMUNICACIÓN</span>
+<span data-intro-signal data-signal-role="product">PRODUCTO</span>
+<span data-intro-signal data-signal-role="data">DATOS</span>
+<span data-intro-signal data-signal-role="crm">CRM</span>
+<span data-intro-signal data-signal-role="systems">SISTEMAS</span>
+<span data-intro-signal data-signal-role="ux">UX</span>
+<span data-intro-signal data-signal-role="metric">53.8%</span>
+<span data-intro-signal data-signal-role="chapters">01—04</span>
+</div>
+<div class="experience-intro__lines" aria-hidden="true">
+<i data-intro-line></i><i data-intro-line></i><i data-intro-line></i><i data-intro-line></i>
+</div>
+<div class="experience-intro__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+</div>
+<button class="experience-intro__skip" type="button" data-intro-skip>OMITIR ↗</button>
+<div class="hero-grid">
+<div class="hero-index">
+<span>PORTAFOLIO / 2026</span>
+<span>COMUNICACIÓN × PRODUCTO × DATOS</span>
+</div>
+<div class="hero-copy">
+<p class="kicker">Luis Alberto Sabrera Espinoza</p>
+<h1 data-hero-title="">
+<span class="hero-line"><span>HAGO</span></span>
+<span class="hero-line"><span>ENTENDIBLE</span></span>
+<span class="hero-line hero-line-signal"><span>LO COMPLEJO.</span></span>
+</h1>
+<p class="hero-description">
+            Diseño productos y sistemas digitales combinando
+            <strong>UX/UI, comunicación, marketing y analítica</strong>.
+            Mi trabajo empieza antes de la interfaz: empieza entendiendo
+            información, personas y negocio.
+          </p>
+</div>
+<div class="hero-side">
+<div class="hero-side-block">
+<span class="micro-label">Actual</span>
+<p>Diseño de Producto / UX y Marketing — Studios TKOH</p>
+<p>Marketing y Analítica — Amazon Magic Park</p>
+</div>
+<div class="hero-side-block">
+<span class="micro-label">Enfoque</span>
+<p>Diseño de Producto</p>
+<p>Sistemas de Diseño</p>
+<p>UX guiado por datos</p>
+</div>
+<button class="hero-explore-cta" data-hero-explore="" type="button">
+<span>EXPLORA MI PERFIL</span><i>3 LENTES ↘</i>
+</button>
+</div>
+</div>
+<div aria-label="Áreas de trabajo" class="signal-strip">
+<span>SEÑALES</span>
+<span>ESTRUCTURA</span>
+<span>INTERFAZ</span>
+<span>APRENDER</span>
+</div>
+</section>
+<section aria-labelledby="work-title" class="work-section" data-section="" id="work">
+<div aria-hidden="true" class="ambient-field ambient-field-work">
+<div class="ambient-slot ambient-work-flow" data-ambient-motion="" data-from-y="-5" data-rotate="0.7" data-to-y="8">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-flow.webp" width="1254"/>
+</div>
+<div class="ambient-slot ambient-work-wire" data-ambient-motion="" data-from-y="7" data-rotate="-1" data-to-y="-5">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-wireframe.webp" width="1254"/>
+</div>
+</div>
+<div class="section-intro">
+<div>
+<span class="section-number">01</span>
+<p class="section-kicker">TRABAJO SELECCIONADO</p>
+</div>
+<h2 id="work-title">Sistemas que convierten información en decisiones.</h2>
+</div>
+<div class="project-list">
+<article class="project-row" data-lens="producto comunicacion" data-lens-target="">
+<a aria-label="Ver trabajo seleccionado en Studios TKOH" class="project-link" href="#case-tkoh">
+<div class="project-no">001</div>
+<div class="project-title">
+<span class="project-eyebrow">Experiencia · Producto digital</span>
+<h3>STUDIOS TKOH</h3>
+</div>
+<div class="project-role">
+<span>Diseño de Producto</span>
+<span>UX/UI</span>
+<span>Marketing</span>
+</div>
+<div class="project-year">2026 →</div>
+</a>
+</article>
+<article class="project-row" data-lens="datos comunicacion" data-lens-target="">
+<a aria-label="Ver caso Amazon Magic Park" class="project-link" href="#case-amp">
+<div class="project-no">002</div>
+<div class="project-title">
+<span class="project-eyebrow">Amazon Magic Park · Operaciones</span>
+<h3>MARKETING + DATOS</h3>
+</div>
+<div class="project-role">
+<span>Analítica</span>
+<span>CRM</span>
+<span>Marketing</span>
+</div>
+<div class="project-year">2026 →</div>
+</a>
+</article>
+<article class="project-row" data-lens="comunicacion producto" data-lens-target="">
+<a aria-label="Ver experiencia en 20 Prod." class="project-link" href="#case-20prod">
+<div class="project-no">003</div>
+<div class="project-title">
+<span class="project-eyebrow">Liderazgo · Marca · UX · 2021–2023</span>
+<h3>20 PROD.</h3>
+</div>
+<div class="project-role">
+<span>Jefatura de Marketing</span>
+<span>Diseño de Marca</span>
+<span>UX</span>
+</div>
+<div class="project-year">2021 — 2023</div>
+</a>
+</article>
+<article class="project-row" data-lens="comunicacion" data-lens-target="">
+<a aria-label="Ver experiencia en SUNAFIL" class="project-link" href="#case-visual">
+<div class="project-no">004</div>
+<div class="project-title">
+<span class="project-eyebrow">Sector público · Comunicación para el desarrollo</span>
+<h3>SUNAFIL</h3>
+</div>
+<div class="project-role">
+<span>Coordinación</span>
+<span>Prevención</span>
+<span>Comunicación institucional</span>
+</div>
+<div class="project-year">2023</div>
+</a>
+</article>
+</div>
+
+</section>
+<div class="experiences" data-experiences="">
+<nav aria-label="Navegación entre experiencias" class="experience-rail">
+<span class="experience-rail-label">EXPERIENCIA</span>
+<a data-experience-link="case-tkoh" href="#case-tkoh"><span>01</span><strong>TKOH</strong></a>
+<a data-experience-link="case-amp" href="#case-amp"><span>02</span><strong>AMP</strong></a>
+<a data-experience-link="case-20prod" href="#case-20prod"><span>03</span><strong>20 PROD.</strong></a>
+<a data-experience-link="case-visual" href="#case-visual"><span>04</span><strong>SUNAFIL</strong></a>
+</nav>
+<section aria-labelledby="crm-title" class="exp-case exp-case-dark" data-discovery-copy="Ordenar crecimiento sin perder claridad." data-discovery-title="Producto que escala" data-experience="" id="case-tkoh">
+<div aria-hidden="true" class="ambient-field ambient-field-case ambient-field-tkoh">
+<div class="ambient-slot ambient-tkoh-wire" data-ambient-motion="" data-from-y="-4" data-rotate="0.8" data-to-y="7">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-wireframe.webp" width="1254"/>
+</div>
+</div>
+<div class="exp-head">
+<span>EXPERIENCIA / 001</span>
+<span>STUDIOS TKOH</span>
+<span>MAR 2026 — ACTUALIDAD</span>
+<a href="#work">↖ TRABAJO SELECCIONADO</a>
+</div>
+<div class="story-line story-line--architecture" data-story-line aria-hidden="true"><span>PROBLEMA</span><i></i><span>ESTRUCTURA</span><i></i><span>INTERFAZ</span></div>
+<div class="exp-hero">
+<div class="exp-hero-main">
+<p class="exp-kicker">DISEÑO DE PRODUCTO · UX/UI · MARKETING</p>
+<h2 id="crm-title">Diseñar sistemas que sigan siendo claros cuando crecen.</h2>
+</div>
+<div class="exp-hero-side">
+<p>
+              En Studios TKOH participo en la evolución de CR Master, un CRM SaaS. Mi trabajo conecta
+              estructura de producto, UX/UI y comunicación visual para reducir fricción sin simplificar de más.
+            </p>
+<dl class="exp-facts">
+<div><dt>FOCO</dt><dd>Producto · jerarquía · consistencia</dd></div>
+<div><dt>HERRAMIENTA</dt><dd>Figma</dd></div>
+<div><dt>ESTADO</dt><dd>Iteración activa</dd></div>
+</dl>
+</div>
+</div>
+<div class="exp-stage exp-stage-product reveal-card">
+<div class="exp-stage-label"><span>01</span> CORE WORKSPACE / PROSPECTOS V2</div>
+<figure class="exp-product-shot">
+<img alt="Pantalla Prospectos V2 de CR Master con métricas, filtros, tabla y acciones comerciales." decoding="async" height="1456" loading="eager" src="assets/images/crmaster-prospectos-light-real.webp" width="2048">
+</img></figure>
+<div aria-label="Decisiones destacadas de la interfaz" class="exp-annotations">
+<div><span>01</span><strong>Jerarquía operacional</strong><p>La lectura empieza por lo que requiere acción.</p></div>
+<div><span>02</span><strong>Contexto sin salir</strong><p>La vista rápida reduce saltos innecesarios.</p></div>
+<div><span>03</span><strong>Estados legibles</strong><p>Texto, posición y forma refuerzan el significado.</p></div>
+</div>
+</div>
+<div class="exp-evidence-grid">
+<article class="exp-evidence reveal-card">
+<div class="exp-evidence-copy"><span>02 / CLIENTE 360</span><h3>La información comercial vive en contexto.</h3></div>
+<figure><img alt="Pantalla Cliente 360 de CR Master con datos del cliente, timeline y oportunidades." decoding="async" height="1456" loading="lazy" src="assets/images/crmaster-cliente360-real-2.webp" width="2048"/></figure>
+</article>
+<article class="exp-evidence reveal-card">
+<div class="exp-evidence-copy"><span>03 / RESUMEN</span><h3>Un centro de control para leer antes de actuar.</h3></div>
+<figure class="is-dark"><img alt="Pantalla Resumen de CR Master en tema oscuro con KPIs, gráfico y actividad reciente." decoding="async" height="1456" loading="lazy" src="assets/images/crmaster-resumen-dark-real.webp" width="2048"/></figure>
+</article>
+</div>
+<div aria-label="Otros módulos del producto" class="exp-sequence">
+<div class="exp-sequence-intro"><span>04—06 / SISTEMA</span><h3>La misma lógica, en distintos momentos del trabajo.</h3></div>
+<div class="exp-sequence-list">
+<article><span>04</span><strong>MI TRABAJO</strong><p>Prioridades, agenda y seguimiento diario.</p></article>
+<article><span>05</span><strong>EMPRESAS</strong><p>Cartera, cuentas y lectura de salud comercial.</p></article>
+<article><span>06</span><strong>ACTIVIDADES</strong><p>Tareas y reuniones dentro del mismo contexto.</p></article>
+</div>
+<div class="exp-sequence-images">
+<figure><img alt="Pantalla Mi trabajo de CR Master." decoding="async" height="1456" loading="lazy" src="assets/images/crmaster-mi-trabajo-real.webp" width="2048"/></figure>
+<figure><img alt="Pantalla Empresas de CR Master." decoding="async" height="1456" loading="lazy" src="assets/images/crmaster-empresas-real.webp" width="2048"/></figure>
+<figure><img alt="Pantalla Actividades de CR Master." decoding="async" height="1456" loading="lazy" src="assets/images/crmaster-actividades-real.webp" width="2048"/></figure>
+</div>
+</div>
+<div class="exp-proof">
+<span>LO QUE ESTOY RESOLVIENDO</span>
+<p>Más módulos no deberían producir más ruido. El sistema visual debe ayudar a reconocer patrones, priorizar información y continuar trabajando sin reaprender la interfaz.</p>
+</div>
+<div class="exp-resource-line">
+<div><span>07 / MATERIAL COMPLEMENTARIO</span><strong>Manual comercial CR Master</strong></div>
+<div class="exp-resource-actions">
+<button data-pdf-open="" type="button">Vista previa</button>
+<a href="assets/docs/CR_MASTER_Manual_Comercial_A4_Editable.pdf" rel="noopener noreferrer" target="_blank">Abrir PDF ↗</a>
+</div>
+</div>
+<div class="crm-pdf-modal" data-pdf-modal="" hidden="">
+<div aria-hidden="true" class="crm-pdf-backdrop" data-pdf-close=""></div>
+<div aria-labelledby="crm-pdf-title" aria-modal="true" class="crm-pdf-dialog" role="dialog">
+<div class="crm-pdf-dialog-head">
+<div><span>Vista rápida</span><strong id="crm-pdf-title">Manual comercial CR Master</strong></div>
+<button aria-label="Cerrar vista previa" class="crm-pdf-close" data-pdf-close="" type="button">×</button>
+</div>
+<iframe class="crm-pdf-embed" loading="lazy" src="assets/docs/CR_MASTER_Manual_Comercial_A4_Editable.pdf#view=FitH" title="Vista previa del Manual Comercial CR Master"></iframe>
+</div>
+</div>
+</section>
+<section aria-labelledby="amp-title" class="exp-case exp-case-light" data-discovery-copy="Conectar campaña, CRM y seguimiento comercial." data-discovery-title="Datos que operan" data-experience="" id="case-amp">
+<div aria-hidden="true" class="ambient-field ambient-field-case ambient-field-amp">
+<div class="ambient-slot ambient-amp-flow" data-ambient-motion="" data-from-y="-8" data-rotate="1.1" data-to-y="10">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-flow.webp" width="1254"/>
+</div>
+</div>
+<div class="exp-head">
+<span>EXPERIENCIA / 002</span>
+<span>AMAZON MAGIC PARK</span>
+<span>MARKETING Y ANALÍTICA</span>
+<a href="#work">↖ TRABAJO SELECCIONADO</a>
+</div>
+<div class="story-line story-line--operation" data-story-line aria-hidden="true"><span>CAMPAÑA</span><i></i><span>LEAD</span><i></i><span>CRM</span><i></i><span>ASESOR</span><i></i><span>DECISIÓN</span></div>
+<div class="exp-hero">
+<div class="exp-hero-main">
+<p class="exp-kicker">MARKETING · ANALÍTICA · CRM</p>
+<h2 id="amp-title">Del anuncio a la decisión.</h2>
+</div>
+<div class="exp-hero-side">
+<p>
+              En menos de dos meses conecté campañas, seguimiento y lectura comercial para que la información
+              dejara de vivir aislada y empezara a sostener decisiones operativas.
+            </p>
+<dl class="exp-facts">
+<div><dt>FOCO</dt><dd>Captación · seguimiento · lectura comercial</dd></div>
+<div><dt>APORTE</dt><dd>Marketing + analítica + estructura CRM</dd></div>
+<div><dt>PERIODO</dt><dd>Implementación inicial · &lt; 2 meses</dd></div>
+</dl>
+</div>
+</div>
+<section aria-labelledby="amp-journey-title" class="amp-journey">
+<div class="amp-journey-intro">
+<span>RECORRIDO OPERATIVO</span>
+<h3 id="amp-journey-title">La campaña no termina en el clic.</h3>
+<p>Mi trabajo fue conectar captación, operación comercial y lectura de datos para que cada lead tuviera contexto, responsable y continuidad.</p>
+</div>
+<div class="amp-journey-list">
+<article data-amp-moment="">
+<span class="amp-journey-no">01</span>
+<div class="amp-journey-action">
+<strong>CAPTAR</strong>
+<p>Campañas y contenido generan la primera señal de intención.</p>
+</div>
+<em>TikTok Ads · contenido · CTR</em>
+</article>
+<article data-amp-moment="">
+<span class="amp-journey-no">02</span>
+<div class="amp-journey-action">
+<strong>CENTRALIZAR</strong>
+<p>El lead entra al CRM con una fuente común y trazabilidad.</p>
+</div>
+<em>Ingreso · fuente · contexto</em>
+</article>
+<article data-amp-moment="">
+<span class="amp-journey-no">03</span>
+<div class="amp-journey-action">
+<strong>ACTIVAR</strong>
+<p>Asignación, SLA y seguimiento convierten el registro en trabajo comercial.</p>
+</div>
+<em>Asesor · SLA · continuidad</em>
+</article>
+<article data-amp-moment="">
+<span class="amp-journey-no">04</span>
+<div class="amp-journey-action">
+<strong>LEER</strong>
+<p>Los estados y métricas permiten detectar fricción y decidir qué ajustar.</p>
+</div>
+<em>Seguimiento · conversión · decisión</em>
+</article>
+</div>
+</section>
+<div aria-label="Indicadores de operación" class="amp-metrics">
+<article><span>CTR</span><strong>0.67%</strong><p>rendimiento publicitario observado</p></article>
+<article><span>PRIMERA RESPUESTA</span><strong>53.8%</strong><p>leads con cobertura inicial</p></article>
+<article><span>SEGUIMIENTO ACTIVO</span><strong>43.7%</strong><p>base comercial movilizada</p></article>
+<article><span>EQUIPO EN ROTACIÓN</span><strong>100%</strong><p>asesores integrados al flujo</p></article>
+</div>
+<div class="amp-operation-map">
+<div class="amp-operation-copy">
+<span>OPERACIÓN / NO SOLO CAMPAÑAS</span>
+<h3>El valor estuvo en conectar las partes.</h3>
+<p>Campaña, lead, asignación, SLA y seguimiento dejaron de leerse como actividades separadas. El CRM pasó a funcionar como una capa común de operación.</p>
+</div>
+<div aria-label="Capas conectadas de la operación" class="amp-operation-lines">
+<div><span>01</span><strong>TRÁFICO</strong><em>TikTok Ads</em></div>
+<div><span>02</span><strong>INGESTA</strong><em>Lead registrado</em></div>
+<div><span>03</span><strong>DISTRIBUCIÓN</strong><em>Asignación a asesor</em></div>
+<div><span>04</span><strong>SLA</strong><em>Tiempo de atención</em></div>
+<div><span>05</span><strong>SEGUIMIENTO</strong><em>Estado y continuidad</em></div>
+<div><span>06</span><strong>LECTURA</strong><em>Decisión comercial</em></div>
+</div>
+</div>
+<div class="exp-proof exp-proof-darkline">
+<span>MI APORTE</span>
+<p>No fue solamente ejecutar marketing. Fue ordenar el recorrido completo para que campaña, datos y trabajo comercial pudieran leerse como un mismo sistema.</p>
+</div>
+</section>
+<section aria-labelledby="prod20-title" class="exp-case exp-case-paper" data-discovery-copy="Convertir una oferta amplia en sistemas visuales entendibles." data-discovery-title="Comunicación que estructura" data-experience="" id="case-20prod">
+<div aria-hidden="true" class="ambient-field ambient-field-case ambient-field-prod">
+<div class="ambient-slot ambient-prod-orbit" data-ambient-motion="" data-from-y="5" data-rotate="-1.2" data-to-y="-8">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-orbit.webp" width="1254"/>
+</div>
+</div>
+<div class="exp-head">
+<span>EXPERIENCIA / 003</span>
+<span>20 PROD.</span>
+<span>2021 — 2023</span>
+<a href="#work">↖ TRABAJO SELECCIONADO</a>
+</div>
+<div class="story-line story-line--editorial" data-story-line aria-hidden="true"><span>AUDIENCIA</span><i></i><span>MENSAJE</span><i></i><span>SISTEMA VISUAL</span></div>
+<div class="exp-hero">
+<div class="exp-hero-main">
+<p class="exp-kicker">JEFATURA DE MARKETING · MARCA · UX</p>
+<h2 id="prod20-title">Antes de producto, ya estaba diseñando cómo entender información.</h2>
+</div>
+<div class="exp-hero-side">
+<p>
+              En 20 Prod. lideré marketing y trabajé directamente en marca, UX web y contenido.
+              Fue el puente entre mi formación en comunicación y la forma en la que hoy pienso producto.
+            </p>
+<dl class="exp-facts">
+<div><dt>ROL</dt><dd>Jefe de Marketing · Diseñador de Marca/UX</dd></div>
+<div><dt>TRABAJO</dt><dd>Estrategia · web · identidad · redes</dd></div>
+<div><dt>CONTEXTO</dt><dd>Clientes de distintos sectores</dd></div>
+</dl>
+</div>
+</div>
+<div aria-label="Archivo de trabajos web y de marca" class="prod-archive">
+<div class="prod-archive-title"><span>01 / UX WEB</span><h3>Tres negocios. Tres problemas de información.</h3></div>
+<a class="prod-archive-row" href="https://www.contaperu.pe/" rel="noopener noreferrer" target="_blank">
+<span>01</span><strong>CONTAPERÚ</strong><p>Jerarquizar servicios para construir confianza y acercar al contacto comercial.</p><em>UX CORPORATIVO ↗</em>
+</a>
+<a class="prod-archive-row" href="https://www.contaperuglobal.com/" rel="noopener noreferrer" target="_blank">
+<span>02</span><strong>CONTAPERÚ GLOBAL</strong><p>Ordenar una oferta amplia de módulos sin esconder la complejidad del producto.</p><em>ARQUITECTURA DE INFORMACIÓN ↗</em>
+</a>
+<a class="prod-archive-row" href="https://www.sistemasford.com/" rel="noopener noreferrer" target="_blank">
+<span>03</span><strong>SISTEMAS FORD</strong><p>Convertir categorías técnicas en rutas de decisión más rápidas.</p><em>UX PARA CATÁLOGO ↗</em>
+</a>
+</div>
+<div class="prod-social-stage">
+<div class="prod-social-copy">
+<span>02 / MARCA + REDES</span>
+<h3>La estrategia también tenía que funcionar en una pieza cotidiana de redes.</h3>
+<p>Para Fabimatic desarrollé contenido gráfico para redes, traduciendo servicios cotidianos a mensajes promocionales directos y reconocibles.</p>
+</div>
+<div aria-label="Piezas realizadas para Fabimatic" class="prod-social-images">
+<figure><img alt="Pieza de Fabimatic sobre lavado de chompas de algodón." height="1200" loading="lazy" src="assets/images/fabimatic-chompas.webp" width="1200"/><figcaption>01 / CHOMPAS</figcaption></figure>
+<figure><img alt="Pieza de Fabimatic sobre lavado de muebles." height="1200" loading="lazy" src="assets/images/fabimatic-muebles.webp" width="1200"/><figcaption>02 / MUEBLES</figcaption></figure>
+<figure><img alt="Pieza de Fabimatic sobre lavado de edredones." height="1200" loading="lazy" src="assets/images/fabimatic-edredones.webp" width="1200"/><figcaption>03 / EDREDONES</figcaption></figure>
+</div>
+</div>
+<div class="exp-proof exp-proof-darkline">
+<span>LO QUE CONSOLIDÓ ESTA ETAPA</span>
+<p>Entender audiencias, estructurar mensajes y construir sistemas visuales. Esa secuencia terminó convirtiéndose en mi forma de abordar UX y producto.</p>
+</div>
+</section>
+<section aria-labelledby="visual-title" class="exp-case exp-case-light" data-discovery-copy="Diseñar comprensión también ocurre fuera de una pantalla." data-discovery-title="Contexto antes que interfaz" data-experience="" id="case-visual">
+<div aria-hidden="true" class="ambient-field ambient-field-case ambient-field-sunafil">
+<div class="ambient-slot ambient-sunafil-contour" data-ambient-motion="" data-from-y="-5" data-rotate="0.6" data-to-y="7">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-contour.webp" width="1254"/>
+</div>
+</div>
+<div class="exp-head">
+<span>EXPERIENCIA / 004</span>
+<span>SUNAFIL</span>
+<span>MAR — NOV 2023</span>
+<a href="#work">↖ TRABAJO SELECCIONADO</a>
+</div>
+<div class="story-line story-line--documentary" data-story-line aria-hidden="true"><span>PERSONAS</span><i></i><span>CONTEXTO</span><i></i><span>COMPRENSIÓN</span></div>
+<div class="exp-hero sunafil-exp-hero">
+<div class="exp-hero-main">
+<p class="exp-kicker">COORDINACIÓN · PREVENCIÓN · COMUNICACIÓN INSTITUCIONAL</p>
+<h2 id="visual-title">Antes de diseñar interfaces, aprendí a diseñar comprensión.</h2>
+</div>
+<div class="exp-hero-side">
+<p>
+              En Coordinación y Prevención Regional trabajé en jornadas de orientación y espacios de articulación
+              con empresas, sindicatos y actores institucionales. El trabajo no ocurría en una pantalla: ocurría entre personas, contexto y mensaje.
+            </p>
+<dl class="exp-facts">
+<div><dt>ÁREA</dt><dd>Coordinación y Prevención Regional</dd></div>
+<div><dt>ENFOQUE</dt><dd>Comunicación para el desarrollo</dd></div>
+<div><dt>ENTORNO</dt><dd>Empresas · sindicatos · instituciones</dd></div>
+</dl>
+</div>
+</div>
+<figure class="sunafil-documentary-main reveal-card">
+<img alt="Collage institucional de actividades desarrolladas en SUNAFIL." decoding="async" height="941" loading="lazy" src="assets/images/sunafil-collage-main.webp" width="1672"/>
+<figcaption><span>01 / TERRITORIO</span><strong>Coordinación, prevención y diálogo en contextos reales.</strong></figcaption>
+</figure>
+<div aria-label="Ejes principales de la experiencia" class="sunafil-verbs">
+<article><span>01</span><h3>ESCUCHAR</h3><p>Entender actores, necesidades y contexto antes de comunicar.</p></article>
+<article><span>02</span><h3>ORDENAR</h3><p>Dar estructura a jornadas, mensajes y puntos de contacto institucional.</p></article>
+<article><span>03</span><h3>COMUNICAR</h3><p>Facilitar comprensión sin perder precisión ni tono de servicio público.</p></article>
+</div>
+<div class="sunafil-documentary-grid">
+<figure><img alt="Reunión y espacio de orientación con actores del entorno laboral." height="1086" loading="lazy" src="assets/images/sunafil-dialogo-empresas.webp" width="1448"/><figcaption>DIÁLOGO / EMPRESAS</figcaption></figure>
+<figure><img alt="Registro institucional de equipo y articulación territorial." height="1086" loading="lazy" src="assets/images/sunafil-equipo-institucional.webp" width="1448"/><figcaption>COORDINACIÓN / EQUIPO</figcaption></figure>
+<figure><img alt="Capacitación y jornada de orientación en entorno laboral." height="1086" loading="lazy" src="assets/images/sunafil-capacitacion-territorial.webp" width="1448"/><figcaption>PREVENCIÓN / FORMACIÓN</figcaption></figure>
+</div>
+<div class="exp-proof exp-proof-darkline">
+<span>POR QUÉ ESTÁ EN ESTE PORTAFOLIO</span>
+<p>Porque mi trabajo actual no empieza en Figma. Empieza entendiendo información, personas y contexto. Esa parte de mi criterio se formó mucho antes de llamarla UX.</p>
+</div>
+</section>
+</div>
+<section aria-labelledby="system-title" class="system-section" data-section="" id="system">
+<div aria-hidden="true" class="ambient-field ambient-field-system">
+<div class="ambient-slot ambient-system-contour" data-ambient-motion="" data-from-y="-7" data-rotate="-0.9" data-to-y="7">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-contour.webp" width="1254"/>
+</div>
+</div>
+<div class="section-intro inverse">
+<div>
+<span class="section-number">02</span>
+<p class="section-kicker">MI SISTEMA</p>
+</div>
+<h2 id="system-title">DE SEÑALES DISPERSAS A DECISIONES CLARAS.</h2>
+</div>
+<div class="system-engine" data-system-engine="">
+<div class="system-engine-stage">
+<div aria-hidden="true" class="system-engine-orbit">
+<i></i><i></i><i></i><i></i>
+</div>
+<div aria-label="Motor de claridad" class="system-core">
+<span class="system-core-label">MOTOR DE CLARIDAD</span>
+<strong>CLARIDAD</strong>
+<div aria-hidden="true" class="system-core-states">
+<p class="is-current"><span>01</span>Escuchar antes de dibujar.</p>
+<p><span>02</span>Convertir ruido en estructura.</p>
+<p><span>03</span>Hacer la estructura utilizable.</p>
+<p><span>04</span>Observar, aprender e iterar.</p>
+</div>
+</div>
+<div class="system-nodes">
+<button class="system-node" data-system-node data-system-key="signals" aria-controls="system-projects" aria-pressed="true" type="button">
+<span>01 / ENTRADA</span>
+<h3>Señales</h3>
+<p>Usuarios, negocio, datos, restricciones y contexto.</p>
+</button>
+<button class="system-node" data-system-node data-system-key="structure" aria-controls="system-projects" aria-pressed="false" type="button">
+<span>02 / MARCO</span>
+<h3>Estructura</h3>
+<p>Problema, prioridades, arquitectura, flujos y reglas.</p>
+</button>
+<button class="system-node" data-system-node data-system-key="interface" aria-controls="system-projects" aria-pressed="false" type="button">
+<span>03 / SALIDA</span>
+<h3>Interfaz</h3>
+<p>Jerarquía, componentes, interacción y prototipos.</p>
+</button>
+<button class="system-node" data-system-node data-system-key="learn" aria-controls="system-projects" aria-pressed="false" type="button">
+<span>04 / ITERACIÓN</span>
+<h3>Aprender</h3>
+<p>Retroalimentación, comportamiento, datos e iteración.</p>
+</button>
+</div>
+</div>
+</div>
+<div class="system-projects" id="system-projects" data-system-projects aria-live="polite" aria-label="Proyectos relacionados con la etapa activa">
+<div class="system-projects__head"><span>CONEXIONES / EXPERIENCIA REAL</span><strong data-system-projects-title>Señales</strong></div>
+<div class="system-projects__list" data-system-projects-list>
+<div class="system-project-link" data-strength="strong"><strong>Amazon Magic Park</strong><em>FUERTE</em></div>
+<div class="system-project-link" data-strength="strong"><strong>SUNAFIL</strong><em>FUERTE</em></div>
+<div class="system-project-link" data-strength="medium"><strong>Studios TKOH</strong><em>MEDIA</em></div>
+<div class="system-project-link" data-strength="contextual"><strong>20 Prod.</strong><em>CONTEXTUAL</em></div>
+</div>
+</div>
+<p class="system-quote">
+        Distintas disciplinas.<br/>
+<span>Mismo objetivo: claridad.</span>
+</p>
+</section>
+<section aria-labelledby="about-title" class="about-section" data-section="" id="about">
+<div aria-hidden="true" class="ambient-field ambient-field-about">
+<div class="ambient-slot ambient-about-flow" data-ambient-motion="" data-from-y="6" data-rotate="0.8" data-to-y="-8">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-flow.webp" width="1254"/>
+</div>
+</div>
+<div class="about-index">
+<span class="section-number">03</span>
+<p class="section-kicker">PERFIL</p>
+</div>
+<div class="about-layout">
+<h2 id="about-title">No llegué a producto desde una sola disciplina.</h2>
+<div class="about-copy">
+<p>
+            Empecé en comunicación, pasé por marca, marketing y trabajo institucional,
+            y terminé encontrando en producto un lugar donde esas disciplinas podían trabajar juntas.
+          </p>
+<p>
+            Hoy participo en UX / Diseño de Producto y Marketing para Studios TKOH,
+            mientras trabajo en Marketing y Analítica para Amazon Magic Park.
+          </p>
+<p>
+            Esa mezcla define mi forma de diseñar: entender primero, estructurar después
+            y usar la interfaz como una herramienta para decidir mejor.
+          </p>
+</div>
+</div>
+<div aria-labelledby="profile-signature-title" class="profile-signature">
+<div class="profile-signature-head">
+<span>MI MEZCLA PROFESIONAL</span>
+<h3 id="profile-signature-title">Tres lentes.<br/>Una misma forma de resolver.</h3>
+</div>
+<div class="profile-lenses">
+<article class="profile-lens" data-lens="comunicacion" data-lens-target="" data-profile-lens="">
+<span>01 / COMUNICACIÓN</span>
+<strong>Entender</strong>
+<p>Personas, contexto, lenguaje y la información que realmente importa.</p>
+<i aria-hidden="true">C</i>
+</article>
+<article class="profile-lens" data-lens="producto" data-lens-target="" data-profile-lens="">
+<span>02 / PRODUCTO</span>
+<strong>Estructurar</strong>
+<p>Jerarquías, flujos e interfaces capaces de sostener sistemas complejos.</p>
+<i aria-hidden="true">P</i>
+</article>
+<article class="profile-lens" data-lens="datos" data-lens-target="" data-profile-lens="">
+<span>03 / DATOS</span>
+<strong>Decidir</strong>
+<p>Señales, comportamiento y métricas para saber qué mantener y qué cambiar.</p>
+<i aria-hidden="true">D</i>
+</article>
+</div>
+</div>
+<div aria-label="Trabajo actual" class="profile-current">
+<div class="profile-current-intro">
+<span>AHORA / 2026</span>
+<h3>Trabajo justo en la intersección.</h3>
+</div>
+<article data-lens="producto comunicacion" data-lens-target="" data-profile-current="">
+<span>STUDIOS TKOH</span>
+<strong>Producto + UX + Marketing</strong>
+<p>Evolución de un CRM SaaS, arquitectura de producto, experiencia y sistema visual.</p>
+</article>
+<article data-lens="datos comunicacion" data-lens-target="" data-profile-current="">
+<span>AMAZON MAGIC PARK</span>
+<strong>Marketing + Analítica</strong>
+<p>Campañas, lectura de datos y operación comercial conectada con CRM.</p>
+</article>
+</div>
+<div class="profile-grid profile-grid-refined">
+<article>
+<span class="profile-label">DISCIPLINAS</span>
+<p>Diseño de Producto<br/>UX/UI<br/>Sistemas de Diseño<br/>Marketing y Analítica</p>
+</article>
+<article>
+<span class="profile-label">HERRAMIENTAS</span>
+<p>Figma<br/>Adobe Creative Suite<br/>HTML / CSS<br/>JavaScript básico</p>
+</article>
+<article>
+<span class="profile-label">FORMACIÓN</span>
+<p>Universidad Nacional José Faustino Sánchez Carrión<br/>Bachiller en Ciencias de la Comunicación</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="contact-title" class="contact-section" data-section="" id="contact">
+<div aria-hidden="true" class="ambient-field ambient-field-contact">
+<div class="ambient-slot ambient-contact-wire" data-ambient-motion="" data-from-y="-6" data-rotate="-0.7" data-to-y="6">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-wireframe.webp" width="1254"/>
+</div>
+<div class="ambient-slot ambient-contact-orbit" data-ambient-motion="" data-from-y="7" data-rotate="1" data-to-y="-5">
+<img alt="" class="ambient-asset" decoding="async" height="1254" loading="lazy" src="assets/backgrounds/ambient-orbit.webp" width="1254"/>
+</div>
+</div>
+<div aria-hidden="true" class="contact-monogram">L/S</div>
+<div class="contact-index">
+<span class="section-number">04</span>
+<p class="section-kicker">CONTACTO</p>
+</div>
+<div class="contact-content">
+<h2 id="contact-title">
+<span class="contact-line"><span>YA VISTE</span></span>
+<span class="contact-line"><span>CÓMO PIENSO.</span></span>
+</h2>
+<p class="contact-resolution">Ahora cuéntame qué necesitas hacer más claro.</p>
+<div class="contact-actions">
+<p class="contact-note"><span class="status-dot"></span> Lima, Perú · Disponible para oportunidades de Producto / UX.</p>
+<div aria-label="Contacto directo" class="contact-direct">
+<div class="contact-direct-head">
+<span>CONTACTO DIRECTO</span>
+<span>LIMA, PERÚ</span>
+</div>
+<a aria-label="Enviar correo a Luis Sabrera" class="contact-direct-email" href="mailto:luis.sabrera@studios-tkoh.online">
+              luis.sabrera@studios-tkoh.online
+            </a>
+<p>El correo es mi canal principal para propuestas, colaboraciones y conversaciones sobre producto, UX y sistemas digitales.</p>
+</div>
+<div class="contact-links">
+<a aria-label="Escribir un mensaje por correo a Luis Sabrera" class="contact-message-link" href="mailto:luis.sabrera@studios-tkoh.online?subject=Contacto%20desde%20tu%20portafolio&amp;body=Hola%20Luis%2C%0A%0AQuisiera%20conversar%20contigo%20sobre%3A%0A%0A"><span>Escríbeme por correo</span><i aria-hidden="true">↗</i></a>
+<a href="assets/docs/CV_Luis_Sabrera_2026.pdf" rel="noopener" target="_blank"><span>Ver CV</span><i aria-hidden="true">↗</i></a>
+</div>
+</div>
+</div>
+<div aria-label="Áreas en las que puedo aportar" class="contact-capabilities">
+<article data-contact-capability="" data-lens="producto" data-lens-target="">
+<span>01</span>
+<strong>Producto / UX</strong>
+<p>Flujos, jerarquía e interfaces para productos con muchas piezas.</p>
+</article>
+<article data-contact-capability="" data-lens="producto comunicacion" data-lens-target="">
+<span>02</span>
+<strong>Sistemas</strong>
+<p>Consistencia visual, componentes y estructura para poder escalar.</p>
+</article>
+<article data-contact-capability="" data-lens="datos" data-lens-target="">
+<span>03</span>
+<strong>Lectura</strong>
+<p>Marketing y analítica cuando la decisión también necesita datos.</p>
+</article>
+</div>
+<div aria-hidden="true" class="contact-signal">
+<span>PRODUCTO</span><i>×</i><span>UX</span><i>×</i><span>SISTEMAS</span><i>×</i><span>DATOS</span>
+</div>
+</section>
+</main>
+<footer>
+<span>L/S — <span data-year=""></span></span>
+<span>Hacer entendible lo complejo. · Lima, Perú</span>
+<a href="#top">Volver arriba ↑</a>
+</footer>
+</body>
+</html>

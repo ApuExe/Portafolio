@@ -1,0 +1,206 @@
+/* ============================================================
+   V2.13 LITE — EXPERIENCE INTRO
+   Zero-JS safe by default. Decorative intro activates only when JS opts in.
+   ============================================================ */
+
+.experience-intro,
+.experience-intro__skip {
+  display: none;
+}
+
+html.has-experience-intro .hero {
+  isolation: isolate;
+}
+
+html.has-experience-intro .experience-intro,
+html.has-experience-intro .experience-intro__skip {
+  display: block;
+}
+
+.experience-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.experience-intro__signals {
+  position: absolute;
+  inset: 0;
+  transform: translate(var(--intro-pointer-x, 0), var(--intro-pointer-y, 0));
+  transition: transform 180ms ease-out;
+}
+
+.experience-intro__signals span {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 7px;
+  border: 1px solid rgba(15, 95, 245, .28);
+  background: rgba(244, 245, 248, .86);
+  color: var(--ink, #101010);
+  font-family: var(--mono, monospace);
+  font-size: clamp(8px, .7vw, 10px);
+  letter-spacing: .08em;
+  line-height: 1;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+.experience-intro__signals [data-signal-role="communication"] { left: 7%; top: 24%; }
+.experience-intro__signals [data-signal-role="product"] { left: 67%; top: 18%; }
+.experience-intro__signals [data-signal-role="data"] { left: 79%; top: 64%; }
+.experience-intro__signals [data-signal-role="crm"] { left: 12%; top: 68%; }
+.experience-intro__signals [data-signal-role="systems"] { left: 42%; top: 16%; }
+.experience-intro__signals [data-signal-role="ux"] { left: 54%; top: 71%; }
+.experience-intro__signals [data-signal-role="metric"] { left: 26%; top: 40%; }
+.experience-intro__signals [data-signal-role="chapters"] { left: 85%; top: 39%; }
+
+.experience-intro__lines {
+  position: absolute;
+  inset: 0;
+  transform: translate(calc(var(--intro-pointer-x, 0) * -.35), calc(var(--intro-pointer-y, 0) * -.35));
+  transition: transform 220ms ease-out;
+}
+
+.experience-intro__lines i {
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: clamp(130px, 23vw, 420px);
+  background: linear-gradient(90deg, transparent, rgba(15,95,245,.72), transparent);
+  transform-origin: left center;
+}
+
+.experience-intro__lines i:nth-child(1) { left: 8%; top: 34%; rotate: -7deg; }
+.experience-intro__lines i:nth-child(2) { left: 48%; top: 27%; rotate: 5deg; }
+.experience-intro__lines i:nth-child(3) { left: 24%; top: 62%; rotate: 4deg; }
+.experience-intro__lines i:nth-child(4) { left: 61%; top: 58%; rotate: -9deg; }
+
+.experience-intro__mark {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: clamp(84px, 8vw, 132px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.experience-intro__mark span {
+  position: absolute;
+  display: block;
+  width: 42%;
+  height: 42%;
+  border: 1px solid rgba(15,95,245,.88);
+  background: rgba(244,245,248,.92);
+}
+
+.experience-intro__mark span:nth-child(1) { left: 0; top: 0; }
+.experience-intro__mark span:nth-child(2) { right: 0; top: 0; background: rgba(15,95,245,.92); }
+.experience-intro__mark span:nth-child(3) { left: 0; bottom: 0; background: rgba(15,95,245,.12); }
+.experience-intro__mark span:nth-child(4) { right: 0; bottom: 0; border-color: rgba(231,74,55,.75); }
+
+.experience-intro__skip {
+  position: absolute;
+  top: clamp(78px, 7vw, 108px);
+  right: max(24px, calc((100vw - var(--page, 1440px)) / 2));
+  z-index: 8;
+  min-width: 88px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid rgba(16,16,16,.28);
+  background: rgba(244,245,248,.88);
+  color: var(--ink, #101010);
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: .08em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: border-color var(--motion-hover, 170ms) ease, color var(--motion-hover, 170ms) ease, background-color var(--motion-hover, 170ms) ease;
+}
+
+.experience-intro__skip:hover,
+.experience-intro__skip:focus-visible {
+  border-color: var(--signal, #0f5ff5);
+  color: var(--signal, #0f5ff5);
+  background: #fff;
+}
+
+html.intro-running .hero-grid,
+html.intro-running .signal-strip {
+  position: relative;
+  z-index: 2;
+}
+
+html.intro-running [data-hero-title],
+html.intro-running .hero-description,
+html.intro-running .hero-side,
+html.intro-running .hero-index,
+html.intro-running .signal-strip {
+  opacity: .14;
+}
+
+html.intro-resolved .experience-intro,
+html.intro-resolved .experience-intro__skip {
+  display: none !important;
+}
+
+@media (max-width: 820px) {
+  .experience-intro__signals [data-signal-role="systems"],
+  .experience-intro__signals [data-signal-role="chapters"],
+  .experience-intro__signals [data-signal-role="metric"] { display: none; }
+  .experience-intro__signals [data-signal-role="communication"] { left: 7%; top: 26%; }
+  .experience-intro__signals [data-signal-role="product"] { left: 62%; top: 19%; }
+  .experience-intro__signals [data-signal-role="data"] { left: 66%; top: 68%; }
+  .experience-intro__signals [data-signal-role="crm"] { left: 10%; top: 64%; }
+  .experience-intro__signals [data-signal-role="ux"] { left: 50%; top: 45%; }
+  .experience-intro__lines i:nth-child(2),
+  .experience-intro__lines i:nth-child(4) { display: none; }
+  .experience-intro__skip { top: 70px; right: 18px; }
+}
+
+@media (max-width: 480px) {
+  .experience-intro__signals [data-signal-role="ux"] { display: none; }
+  .experience-intro__signals span { font-size: 8px; min-height: 24px; }
+  .experience-intro__mark { width: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-intro,
+  .experience-intro__skip { display: none !important; }
+  html.intro-running [data-hero-title],
+  html.intro-running .hero-description,
+  html.intro-running .hero-side,
+  html.intro-running .hero-index,
+  html.intro-running .signal-strip { opacity: 1 !important; }
+}
+
+.experience-intro__skip[hidden] { display: none !important; }
+
+/* The historical Hero assigns relative positioning to every direct child.
+   V2.13 intro must explicitly outrank that rule. */
+html.has-experience-intro .hero > .experience-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+html.has-experience-intro .hero > .experience-intro__skip {
+  position: absolute;
+  top: clamp(78px, 7vw, 108px);
+  right: max(24px, calc((100vw - var(--page, 1440px)) / 2));
+  left: auto;
+  width: auto;
+  z-index: 8;
+  pointer-events: auto;
+}
+
+@media (max-width: 820px) {
+  html.has-experience-intro .hero > .experience-intro__skip {
+    top: 70px;
+    right: 18px;
+  }
+}
