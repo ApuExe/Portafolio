@@ -161,3 +161,10 @@ Ver detalle técnico en `V1.1_RC5_MOBILE_AND_CHOREOGRAPHY_QA.md`.
 - Fine-pointer motion limitado a pocos píxeles; touch y `prefers-reduced-motion` usan estados simplificados/finales.
 - Se conservan los fixes de navegación RC6, la coreografía RC7 y la zona segura de Mi Sistema RC8.
 - QA: `V1.1_RC9_PROFILE_CLOSING_QA.md`.
+
+## V1.1 RC9.1 — Responsive Stability Hotfix
+
+- Corrige el desborde intrínseco del grid documental de SUNAFIL en tablet/laptop mediante tracks `minmax(0, ...)` sin alterar su dirección visual.
+- Extiende el wrap del cierre `PRODUCTO × UX × SISTEMAS × DATOS` hasta 760 px para evitar recortes en tablet pequeña.
+- Conserva intactos Hero, SIGNAL → CLARITY, casos, Mi Sistema, Perfil, Contacto, paleta, tipografía y motion.
+- QA específica: `V1.1_RC9.1_RESPONSIVE_STABILITY_QA.md` y `tests/test_rc9_1_responsive_stability.py`.
