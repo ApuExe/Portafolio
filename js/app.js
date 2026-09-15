@@ -164,6 +164,37 @@
     return true;
   };
 
+  // Main navigation should frame the first meaningful visual block of each
+  // chapter, not the section boundary. Native anchor offsets were stacking
+  // html scroll-padding with section scroll-margin and leaving the previous
+  // chapter visible below the fixed header.
+  const mainSectionFocus = {
+    work: '.section-intro',
+    system: '.section-intro',
+    about: '.about-index',
+    // Contact already has a deliberate section-level frame: keep the dark
+    // chapter boundary visible immediately below the fixed header.
+    contact: null
+  };
+
+  const scrollMainSectionIntoFrame = (target, id) => {
+    if (!Object.prototype.hasOwnProperty.call(mainSectionFocus, id)) return false;
+    const selector = mainSectionFocus[id];
+    const focus = selector ? target.querySelector(selector) : target;
+    if (!focus) return false;
+
+    const topbarHeight = topbar?.getBoundingClientRect().height || 0;
+    const gap = window.innerWidth <= 780 ? 12 : 18;
+    const destination = Math.max(0, window.scrollY + focus.getBoundingClientRect().top - topbarHeight - gap);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+      top: destination,
+      behavior: reduceMotion ? 'auto' : 'smooth'
+    });
+    return true;
+  };
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
       const id = anchor.getAttribute("href")?.slice(1);
@@ -172,10 +203,18 @@
       const target = document.getElementById(id);
       if (!target) return;
 
+      const isPrimaryNavLink = anchor.closest('[data-desktop-nav], [data-mobile-nav]');
+
+      if (isPrimaryNavLink && Object.prototype.hasOwnProperty.call(mainSectionFocus, id)) {
+        event.preventDefault();
+        if (location.hash === `#${id}`) history.replaceState(null, '', `#${id}`);
+        else history.pushState(null, '', `#${id}`);
+        scrollMainSectionIntoFrame(target, id);
+      }
       // Experience links land on the case's primary narrative block rather
       // than the outer section boundary. This keeps the kicker + headline
       // consistently framed even when the side column has a different height.
-      if (target.matches('[data-experience]')) {
+      else if (target.matches('[data-experience]')) {
         event.preventDefault();
         if (location.hash === `#${id}`) history.replaceState(null, '', `#${id}`);
         else history.pushState(null, '', `#${id}`);
@@ -523,10 +562,10 @@
 
         const direction = index % 2 === 0 ? 1 : -1;
         const ambientTween = gsap.to(slot, {
-          xPercent: direction * 1.1,
-          yPercent: direction * -1.5,
+          xPercent: direction * 1.8,
+          yPercent: direction * -2.2,
           rotation: direction * .45,
-          duration: 10 + (index % 4) * 1.4,
+          duration: 8 + (index % 4) * 1.1,
           repeat: -1,
           yoyo: true,
           ease: 'sine.inOut',
@@ -813,7 +852,13 @@
 
   const closeMap = () => mapDialog?.close ? mapDialog.close() : mapDialog?.removeAttribute('open');
 
-  mapOpen?.addEventListener('click', () => window.setTimeout(() => setPanel(false), 0));
+  mapOpen?.addEventListener('click', (event) => {
+    event.preventDefault();
+    setPanel(false);
+    if (!mapDialog) return;
+    if (typeof mapDialog.showModal === 'function') mapDialog.showModal();
+    else mapDialog.setAttribute('open', '');
+  });
   mapClose?.addEventListener('click', closeMap);
   mapDialog?.addEventListener('click', (event) => { if (event.target === mapDialog) closeMap(); });
   mapDialog?.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener('click', closeMap));

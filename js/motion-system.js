@@ -180,6 +180,94 @@
   }
 
   // -------------------------------------------------------
+  // V1.1 RC2 global life layer
+  // Existing zones respond to proximity while keeping native scrolling intact.
+  // -------------------------------------------------------
+  const lifeSelectors = [
+    '.project-row',
+    '[data-experience]',
+    '.system-section',
+    '.profile-signature',
+    '.contact-section'
+  ];
+  const lifeZones = [...new Set(lifeSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  lifeZones.forEach((zone) => {
+    zone.classList.add('life-zone');
+    zone.setAttribute('data-life-zone', '');
+    zone.style.setProperty('--life-x', '0px');
+    zone.style.setProperty('--life-y', '0px');
+
+    if (reduceMotion || !finePointer) return;
+    let raf = 0;
+    zone.addEventListener('pointermove', (event) => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const rect = zone.getBoundingClientRect();
+        const px = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - .5) * 2));
+        const py = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - .5) * 2));
+        zone.style.setProperty('--life-x', `${(px * 7).toFixed(2)}px`);
+        zone.style.setProperty('--life-y', `${(py * 5).toFixed(2)}px`);
+        zone.classList.add('is-life-active');
+      });
+    }, { passive: true });
+
+    zone.addEventListener('pointerleave', () => {
+      zone.style.setProperty('--life-x', '0px');
+      zone.style.setProperty('--life-y', '0px');
+      zone.classList.remove('is-life-active');
+    }, { passive: true });
+  });
+
+  if (lifeZones.length && 'IntersectionObserver' in window) {
+    const lifeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('is-life-visible', entry.isIntersecting);
+      });
+    }, { threshold: .08, rootMargin: '8% 0px 8% 0px' });
+    lifeZones.forEach((zone) => lifeObserver.observe(zone));
+  }
+
+  // -------------------------------------------------------
+  // RC3 native reveal layer
+  // Keeps the portfolio visually alive even when no external animation
+  // runtime is available. Uses IntersectionObserver + CSS only.
+  // -------------------------------------------------------
+  const nativeRevealSelectors = [
+    '.work-section .section-intro > *',
+    '.project-row',
+    '[data-experience] .exp-head > *',
+    '[data-experience] .exp-hero-main > *',
+    '[data-experience] .exp-hero-side > *',
+    '.system-section .section-intro > *',
+    '.profile-section .section-intro > *',
+    '.contact-section .contact-line > span',
+    '.contact-section .contact-direct > *'
+  ];
+  const nativeRevealNodes = [...new Set(nativeRevealSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+
+  nativeRevealNodes.forEach((node, index) => {
+    node.classList.add('native-reveal');
+    node.style.setProperty('--native-reveal-delay', `${(index % 4) * 55}ms`);
+  });
+
+  if (nativeRevealNodes.length) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      nativeRevealNodes.forEach((node) => node.classList.add('is-native-visible'));
+    } else {
+      const nativeRevealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-native-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: .10, rootMargin: '0px 0px -8% 0px' });
+      nativeRevealNodes.forEach((node) => nativeRevealObserver.observe(node));
+    }
+  }
+
+  // -------------------------------------------------------
   // Keyboard-friendly project intent feedback.
   // Adds a readable state cue to the live region without changing layout.
   // -------------------------------------------------------

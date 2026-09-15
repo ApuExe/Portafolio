@@ -448,3 +448,186 @@
     transform: translateY(-2px);
   }
 }
+
+/* ============================================================
+   V1.1 RC2 — GLOBAL LIFE LAYER
+   Persistent micro-response across the existing portfolio. No new layout,
+   no scroll hijacking: only proximity, hover and slow ambient breathing.
+   ============================================================ */
+.life-zone {
+  --life-x: 0px;
+  --life-y: 0px;
+}
+
+.life-zone .motion-line {
+  transition: filter 360ms var(--ease-out), opacity 360ms var(--ease-out);
+}
+
+.life-zone.is-life-active .motion-line {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ds-signal) 48%, transparent));
+}
+
+.exp-product-shot img,
+.exp-evidence figure img,
+.prod-social-images figure img,
+.sunafil-documentary-main img,
+.sunafil-documentary-grid figure img {
+  transition: transform 680ms cubic-bezier(.22,.61,.36,1), filter 520ms var(--ease-out);
+  will-change: transform;
+}
+
+.system-engine-orbit {
+  animation: systemOrbitBreathe 18s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.system-section.is-life-visible .system-engine-orbit {
+  animation-play-state: running;
+}
+
+@keyframes systemOrbitBreathe {
+  0%, 100% { rotate: -1.8deg; scale: .995; opacity: .78; }
+  50% { rotate: 1.8deg; scale: 1.012; opacity: 1; }
+}
+
+.profile-lens,
+.contact-message-link,
+.contact-direct-email {
+  transition:
+    transform 420ms cubic-bezier(.22,.61,.36,1),
+    border-color var(--motion-hover) var(--ease-out),
+    background-color var(--motion-hover) var(--ease-out),
+    color var(--motion-hover) var(--ease-out);
+}
+
+.contact-message-link i {
+  display: inline-block;
+  transition: transform 420ms cubic-bezier(.22,.61,.36,1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-row.life-zone .project-title h3 {
+    transform: translate3d(calc(var(--life-x) * .30), calc(var(--life-y) * .18), 0);
+  }
+
+  [data-experience].life-zone .exp-head h2,
+  [data-experience].life-zone .exp-hero-main h2 {
+    transform: translate3d(calc(var(--life-x) * .10), calc(var(--life-y) * .08), 0);
+    transition: transform 560ms cubic-bezier(.22,.61,.36,1);
+  }
+
+  .exp-product-shot:hover,
+  .exp-evidence figure:hover,
+  .prod-social-images figure:hover,
+  .sunafil-documentary-main:hover,
+  .sunafil-documentary-grid figure:hover {
+    transform: translateY(-5px);
+  }
+
+  .exp-product-shot:hover img,
+  .exp-evidence figure:hover img,
+  .prod-social-images figure:hover img,
+  .sunafil-documentary-main:hover img,
+  .sunafil-documentary-grid figure:hover img {
+    transform: translate3d(calc(var(--life-x) * .16), calc(var(--life-y) * .12), 0) scale(1.018);
+  }
+
+  .system-node:hover,
+  .system-node:focus-visible {
+    transform: translateY(-4px) scale(1.012);
+  }
+
+  .profile-lens:hover,
+  .profile-lens:focus-within {
+    transform: translateY(-4px);
+  }
+
+  .contact-message-link:hover,
+  .contact-message-link:focus-visible,
+  .contact-direct-email:hover,
+  .contact-direct-email:focus-visible {
+    transform: translateY(-3px);
+  }
+
+  .contact-message-link:hover i,
+  .contact-message-link:focus-visible i {
+    transform: translate(5px, -5px) rotate(3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .system-engine-orbit { animation: none !important; }
+  .life-zone *,
+  .exp-product-shot img,
+  .exp-evidence figure img,
+  .prod-social-images figure img,
+  .sunafil-documentary-main img,
+  .sunafil-documentary-grid figure img,
+  .contact-message-link i {
+    transition-duration: 0.01ms !important;
+  }
+  .project-row.life-zone .project-title h3,
+  [data-experience].life-zone .exp-head h2,
+  [data-experience].life-zone .exp-hero-main h2,
+  .exp-product-shot:hover img,
+  .exp-evidence figure:hover img,
+  .prod-social-images figure:hover img,
+  .sunafil-documentary-main:hover img,
+  .sunafil-documentary-grid figure:hover img,
+  .system-node:hover,
+  .profile-lens:hover,
+  .contact-message-link:hover,
+  .contact-direct-email:hover,
+  .contact-message-link:hover i {
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   V1.1 RC3 — NATIVE REVEAL FALLBACK
+   Purposeful motion without GSAP/ScrollTrigger.
+   ============================================================ */
+.native-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(.992);
+  filter: saturate(.92);
+  transition:
+    opacity 560ms var(--ease-out),
+    transform 720ms var(--ease-out),
+    filter 720ms var(--ease-out);
+  transition-delay: var(--native-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.native-reveal.is-native-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: saturate(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-row.native-reveal.is-native-visible:hover {
+    transform: translate3d(var(--life-x, 0px), calc(var(--life-y, 0px) - 2px), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .native-reveal,
+  .native-reveal.is-native-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* V1.1 RC8 — keep the active system card inside its peripheral lane. */
+@media (min-width: 981px) and (hover: hover) and (pointer: fine) {
+  .system-node.is-selected,
+  .system-node[aria-pressed="true"],
+  .system-node:hover,
+  .system-node:focus-visible {
+    transform: translateY(-2px) !important;
+  }
+}

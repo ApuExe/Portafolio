@@ -19,6 +19,33 @@
 <link href="assets/images/apple-touch-icon-ls-v213.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="favicon.ico" rel="shortcut icon"/>
 <title>Luis Sabrera — Diseñador de Producto UX/UI</title>
+<script data-intro-prepaint id="intro-prepaint-timeout">
+(() => {
+  const root = document.documentElement;
+  const STORAGE_KEY = 'ls-v11-signal-clarity-rc4-played';
+  const params = new URLSearchParams(window.location.search);
+  const forceReplay = params.get('intro') === 'replay';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let played = false;
+  try { played = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch {}
+
+  window.__portfolioIntroBoot = { storageKey: STORAGE_KEY, forceReplay, startedAt: performance.now(), aborted: false };
+
+  if (!reduceMotion && (forceReplay || !played)) {
+    root.classList.add('has-experience-intro', 'intro-pending');
+    // intro-prepaint-timeout: fail open if deferred dependencies never boot.
+    window.setTimeout(() => {
+      if (root.classList.contains('intro-pending') && !root.classList.contains('intro-running')) {
+        window.__portfolioIntroBoot.aborted = true;
+        root.classList.remove('intro-pending', 'has-experience-intro');
+        root.classList.add('intro-resolved');
+      }
+    }, 9000);
+  } else {
+    root.classList.add('intro-resolved');
+  }
+})();
+</script>
 <!-- Same visual fonts, discovered earlier and without CSS @import -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -28,12 +55,14 @@
 <link href="css/interactive.css" rel="stylesheet"/>
 <link href="css/design-system.css" rel="stylesheet"/>
 <link href="css/motion-system.css" rel="stylesheet"/>
+<link href="css/case-choreography.css" rel="stylesheet"/>
+<link href="css/profile-closing.css" rel="stylesheet"/>
 <link href="css/experience-intro.css" rel="stylesheet"/>
-<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script defer="" src="js/experience-intro.js"></script>
 <script defer="" src="js/app.js"></script>
 <script defer="" src="js/motion-system.js"></script>
+<script defer="" src="js/case-choreography.js"></script>
+<script defer="" src="js/profile-closing.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -128,21 +157,28 @@
 <img alt="" class="ambient-asset" decoding="async" fetchpriority="low" height="1254" src="assets/backgrounds/ambient-wireframe.webp" width="1254"/>
 </div>
 </div>
-<div class="experience-intro" data-experience-intro aria-hidden="true">
+<div class="experience-intro" data-experience-intro data-intro-version="signal-clarity-v11" data-intro-revision="rc3" aria-hidden="true">
 <div class="experience-intro__signals">
-<span data-intro-signal data-signal-role="communication">COMUNICACIÓN</span>
-<span data-intro-signal data-signal-role="product">PRODUCTO</span>
-<span data-intro-signal data-signal-role="data">DATOS</span>
+<span class="experience-intro__signal--xl" data-intro-signal data-signal-role="communication">COMUNICACIÓN</span>
+<span class="experience-intro__signal--xl" data-intro-signal data-signal-role="product">PRODUCTO</span>
+<span class="experience-intro__signal--xl" data-intro-signal data-signal-role="data">DATOS</span>
 <span data-intro-signal data-signal-role="crm">CRM</span>
 <span data-intro-signal data-signal-role="systems">SISTEMAS</span>
 <span data-intro-signal data-signal-role="ux">UX</span>
 <span data-intro-signal data-signal-role="metric">53.8%</span>
 <span data-intro-signal data-signal-role="chapters">01—04</span>
 </div>
+<div class="experience-intro__noise" data-intro-noise aria-hidden="true">
+<i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
 <div class="experience-intro__lines" aria-hidden="true">
 <i data-intro-line></i><i data-intro-line></i><i data-intro-line></i><i data-intro-line></i>
 </div>
-<div class="experience-intro__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="experience-intro__mark" aria-hidden="true">
+<img class="experience-intro__brandmark" src="assets/images/ls-top-icon-v213.webp" alt="" width="256" height="256"/>
+<span></span><span></span><span></span><span></span>
+</div>
+<div class="experience-intro__cut" data-intro-cut aria-hidden="true"></div>
 </div>
 <button class="experience-intro__skip" type="button" data-intro-skip>OMITIR ↗</button>
 <div class="hero-grid">
@@ -153,9 +189,9 @@
 <div class="hero-copy">
 <p class="kicker">Luis Alberto Sabrera Espinoza</p>
 <h1 data-hero-title="">
-<span class="hero-line"><span>HAGO</span></span>
-<span class="hero-line"><span>ENTENDIBLE</span></span>
-<span class="hero-line hero-line-signal"><span>LO COMPLEJO.</span></span>
+<span class="hero-line"><span data-hero-reveal>HAGO</span></span>
+<span class="hero-line"><span data-hero-reveal>ENTENDIBLE</span></span>
+<span class="hero-line hero-line-signal"><span data-hero-reveal>LO COMPLEJO.</span></span>
 </h1>
 <p class="hero-description">
             Diseño productos y sistemas digitales combinando

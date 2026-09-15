@@ -40,16 +40,17 @@ def main():
         count = page.locator('[data-discovery-count]').inner_text()
         assert count == '4/4', f'expected 4/4 after visiting every case header, got {count}'
 
-        # The explorer's final action must lead to real profile content, not a dead-end overlay.
+        # The explorer's final action now opens the intentional Profile Map dialog.
+        # The href remains #about as a semantic/fallback destination, while JS enhances it.
         page.locator('[data-explore-toggle]').click()
         action = page.locator('[data-profile-map-open]')
         assert action.evaluate("el => el.tagName === 'A'"), 'final explorer action is not a link'
-        assert action.get_attribute('href') == '#about', 'final explorer action does not point to #about'
+        assert action.get_attribute('href') == '#about', 'final explorer action lost its semantic #about fallback'
         action.click()
-        page.wait_for_timeout(1300)
-        assert page.evaluate('location.hash') == '#about', 'profile action did not update the URL hash'
-        about_top = page.locator('#about').evaluate('el => Math.abs(el.getBoundingClientRect().top)')
-        assert about_top < 220, f'profile action did not navigate to #about (top distance {about_top})'
+        page.wait_for_timeout(180)
+        dialog = page.locator('[data-profile-map]')
+        assert dialog.evaluate("el => el.open || el.hasAttribute('open')"), 'profile action did not open the Profile Map dialog'
+        assert page.locator('[data-explore-panel]').is_hidden(), 'explorer panel stayed open behind the Profile Map dialog'
 
         browser.close()
 
