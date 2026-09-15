@@ -286,9 +286,16 @@ body.is-lens-mode [data-lens-target].lens-muted:focus-within {
   outline-offset: 5px;
 }
 .system-node.is-selected,
+.system-node.is-preview,
 .system-node:hover {
   opacity: 1 !important;
-  transform: translateY(-4px) scale(1.01) !important;
+  transform: translateY(-2px) !important;
+}
+.system-node.is-selected {
+  border-top-color: var(--ds-signal, #1665ff);
+}
+.system-node.is-preview:not(.is-selected),
+.system-node:hover:not(.is-selected) {
   border-top-color: #fff;
 }
 .system-node.is-selected::after {
@@ -296,7 +303,7 @@ body.is-lens-mode [data-lens-target].lens-muted:focus-within {
   display: inline-block;
   margin-top: 14px;
   padding: 4px 6px;
-  border: 1px solid rgba(255,255,255,.55);
+  border: 1px solid color-mix(in srgb, var(--ds-signal, #1665ff) 72%, #fff);
   color: #fff;
   font: 500 8px/1 var(--mono);
   letter-spacing: .09em;

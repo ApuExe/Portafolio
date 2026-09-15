@@ -4,7 +4,7 @@ Portafolio editorial e interactivo de Luis Sabrera. La identidad se mantiene: bl
 
 ## Estado actual
 
-La V1.1 conserva la arquitectura y el contenido de V1, pero ya extiende el lenguaje de movimiento desde el Hero hacia los cuatro casos. RC7 parte de RC6 Navigation Framing y mantiene sus correcciones de móvil y encuadre.
+La base activa es **V1.1 RC10 · Mi Sistema Polish**. Conserva SIGNAL → CLARITY, los cuatro dialectos de caso, la zona segura de Mi Sistema, el cierre RC9 y el hotfix responsive RC9.1; RC10 refina únicamente el modelo de interacción de Mi Sistema sin alterar su composición visual.
 
 ## V1.1 — SIGNAL → CLARITY
 
@@ -90,7 +90,7 @@ La QA de esta release está documentada en `V2.13_LITE_QA.md`.
 
 ## Siguiente fase
 
-Validar visualmente la RC2 en navegador real. Si el impacto ya está en el nivel correcto, la siguiente iteración debe centrarse en dirección de arte por caso, no en acumular más efectos globales.
+Después de validar RC10 en el sitio publicado, la siguiente fase es **RC11 · Global UX QA**: recorrido completo Hero → Selected Work → casos → Mi Sistema → Perfil → Contacto, priorizando coherencia, accesibilidad, responsive y performance antes de añadir nuevas capas visuales.
 
 **Contacto:** luis.sabrera@studios-tkoh.online  
 **Ubicación:** Lima, Perú
@@ -168,3 +168,14 @@ Ver detalle técnico en `V1.1_RC5_MOBILE_AND_CHOREOGRAPHY_QA.md`.
 - Extiende el wrap del cierre `PRODUCTO × UX × SISTEMAS × DATOS` hasta 760 px para evitar recortes en tablet pequeña.
 - Conserva intactos Hero, SIGNAL → CLARITY, casos, Mi Sistema, Perfil, Contacto, paleta, tipografía y motion.
 - QA específica: `V1.1_RC9.1_RESPONSIVE_STABILITY_QA.md` y `tests/test_rc9_1_responsive_stability.py`.
+
+
+## V1.1 RC10 — Mi Sistema Polish
+
+- Hover y foco pasan a ser **preview temporal**; ya no cambian `aria-pressed` ni reemplazan la selección persistente.
+- Click, tap, `Enter` y `Space` confirman la etapa seleccionada.
+- Al abandonar un preview, el núcleo, la órbita y las conexiones reales vuelven a la última selección confirmada.
+- El estado seleccionado mantiene el azul señal existente y elimina cualquier escala: solo conserva un lift máximo de 2 px en contextos que admiten movimiento.
+- Las conexiones de experiencia real reciben una transición nativa corta (180–210 ms), desactivada con `prefers-reduced-motion`.
+- La región de proyectos deja de ser `aria-live`; los cambios confirmados se anuncian mediante el live status global para evitar ruido durante hover/focus.
+- QA específica: `V1.1_RC10_SYSTEM_POLISH_QA.md` y `tests/test_rc10_system_interaction.py`.

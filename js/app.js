@@ -882,7 +882,7 @@
     });
   });
 
-  // MI SISTEMA: keyboard, pointer and touch all change the explanation in the core.
+  // MI SISTEMA: hover/focus preview the system; click/tap/Enter commit a stage.
   const engine = document.querySelector('[data-system-engine]');
   if (engine) {
     const nodes = [...engine.querySelectorAll('[data-system-node]')];
@@ -897,8 +897,32 @@
       learn: [['Amazon Magic Park', 'strong'], ['Studios TKOH', 'strong'], ['SUNAFIL', 'medium'], ['20 Prod.', 'medium']]
     };
     const STRENGTH_LABEL = { strong: 'FUERTE', medium: 'MEDIA', contextual: 'CONTEXTUAL' };
+    let selectedIndex = 0;
+    let previewIndex = null;
+    let displayedIndex = -1;
 
-    const renderProjects = (node) => {
+    // Preview changes are visual only; the global live status announces committed choices.
+    projectsRegion?.removeAttribute('aria-live');
+
+    const animateProjectChange = () => {
+      if (reduceMotion || typeof Element === 'undefined' || !Element.prototype.animate) return;
+      [projectsTitle, projectsList].filter(Boolean).forEach((target, index) => {
+        target.getAnimations().forEach((animation) => animation.cancel());
+        target.animate(
+          [
+            { opacity: .42, transform: 'translateY(4px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ],
+          {
+            duration: 180 + (index * 30),
+            easing: 'cubic-bezier(.2,.8,.2,1)',
+            fill: 'none'
+          }
+        );
+      });
+    };
+
+    const renderProjects = (node, { animate = true } = {}) => {
       if (!projectsList || !node) return;
       const key = node.dataset.systemKey || 'signals';
       const items = SYSTEM_PROJECTS[key] || SYSTEM_PROJECTS.signals;
@@ -914,19 +938,27 @@
         item.append(title, meta);
         return item;
       }));
+      if (animate) animateProjectChange();
     };
 
-    const activateStep = (index, announce = false) => {
+    const syncCommittedSelection = () => {
+      nodes.forEach((node, index) => {
+        const selected = index === selectedIndex;
+        node.classList.toggle('is-selected', selected);
+        node.setAttribute('aria-pressed', String(selected));
+      });
+    };
+
+    const renderStep = (index, { preview = false, animateProjects = true } = {}) => {
       if (!nodes[index] || !states[index]) return;
       engine.dataset.activeStep = String(index);
-      nodes.forEach((node, i) => {
-        const active = i === index;
-        node.classList.toggle('is-selected', active);
+      nodes.forEach((node, nodeIndex) => {
+        const active = nodeIndex === index;
         node.classList.toggle('is-active', active);
-        node.setAttribute('aria-pressed', String(active));
+        node.classList.toggle('is-preview', preview && active);
       });
-      states.forEach((state, i) => {
-        const active = i === index;
+      states.forEach((state, stateIndex) => {
+        const active = stateIndex === index;
         state.classList.toggle('is-current', active);
         if (window.gsap && !reduceMotion) {
           gsap.killTweensOf(state);
@@ -936,22 +968,52 @@
           state.style.visibility = active ? 'visible' : 'hidden';
         }
       });
-      renderProjects(nodes[index]);
-      if (announce) {
-        const live = document.querySelector('[data-live-status]');
-        if (live) live.textContent = `Etapa ${index + 1}: ${nodes[index].querySelector('h3')?.textContent || ''}.`;
-      }
+      if (displayedIndex !== index) renderProjects(nodes[index], { animate: animateProjects });
+      displayedIndex = index;
+    };
+
+    const announceSelection = (index) => {
+      const live = document.querySelector('[data-live-status]');
+      if (live) live.textContent = `Etapa ${index + 1}: ${nodes[index].querySelector('h3')?.textContent || ''}.`;
+    };
+
+    const commitStep = (index, { announce = true, animateProjects = true } = {}) => {
+      if (!nodes[index] || !states[index]) return;
+      selectedIndex = index;
+      previewIndex = null;
+      syncCommittedSelection();
+      renderStep(index, { preview: false, animateProjects });
+      if (announce) announceSelection(index);
+    };
+
+    const previewStep = (index) => {
+      if (!nodes[index] || index === selectedIndex) return;
+      previewIndex = index;
+      renderStep(index, { preview: true });
+    };
+
+    const restoreCommittedStep = (index) => {
+      if (previewIndex !== index) return;
+      previewIndex = null;
+      renderStep(selectedIndex, { preview: false });
     };
 
     nodes.forEach((node, index) => {
-      node.setAttribute('aria-pressed', 'false');
-      node.addEventListener('pointerenter', () => activateStep(index));
-      node.addEventListener('focus', () => activateStep(index, true));
-      node.addEventListener('click', () => activateStep(index, true));
+      node.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'touch') return;
+        previewStep(index);
+      });
+      node.addEventListener('pointerleave', (event) => {
+        if (event.pointerType === 'touch') return;
+        restoreCommittedStep(index);
+      });
+      node.addEventListener('focus', () => previewStep(index));
+      node.addEventListener('blur', () => restoreCommittedStep(index));
+      node.addEventListener('click', () => commitStep(index));
       node.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          activateStep(index, true);
+          commitStep(index);
         }
         if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
           event.preventDefault();
@@ -963,7 +1025,8 @@
         }
       });
     });
-    activateStep(0);
+
+    commitStep(0, { announce: false, animateProjects: false });
   }
 
   updateDiscoveryUI();

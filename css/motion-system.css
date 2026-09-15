@@ -534,7 +534,7 @@
 
   .system-node:hover,
   .system-node:focus-visible {
-    transform: translateY(-4px) scale(1.012);
+    transform: translateY(-2px);
   }
 
   .profile-lens:hover,
