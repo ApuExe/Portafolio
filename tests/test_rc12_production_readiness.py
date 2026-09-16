@@ -12,8 +12,8 @@ def _meta(*, prop=None, name=None):
     return SOUP.find('meta', attrs=attrs)
 
 
-def test_readme_declares_rc12_as_active_baseline():
-    assert 'La base activa es **V1.1 RC12 · Production Readiness**' in README
+def test_readme_preserves_rc12_release_documentation():
+    assert '## V1.1 RC12 — Production Readiness' in README
 
 
 def test_social_preview_metadata_is_complete():
@@ -23,10 +23,10 @@ def test_social_preview_metadata_is_complete():
     twitter_image = _meta(name='twitter:image')
     twitter_alt = _meta(name='twitter:image:alt')
 
-    assert og_image and og_image.get('content') == 'assets/images/social-preview.jpg'
+    assert og_image and og_image.get('content', '').endswith('assets/images/social-preview.jpg')
     assert og_alt and 'Luis Sabrera' in og_alt.get('content', '')
     assert twitter_card and twitter_card.get('content') == 'summary_large_image'
-    assert twitter_image and twitter_image.get('content') == 'assets/images/social-preview.jpg'
+    assert twitter_image and twitter_image.get('content', '').endswith('assets/images/social-preview.jpg')
     assert twitter_alt and 'Luis Sabrera' in twitter_alt.get('content', '')
     assert (ROOT / 'assets/images/social-preview.jpg').is_file()
 

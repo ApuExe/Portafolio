@@ -4,7 +4,9 @@ Portafolio editorial e interactivo de Luis Sabrera. La identidad se mantiene: bl
 
 ## Estado actual
 
-La base activa es **V1.1 RC12 · Production Readiness**. Conserva íntegramente la experiencia visual de RC11 y endurece únicamente entrega, metadata social y prioridades de carga antes de publicación.
+La base activa es **V1.1 RC13 · Live Deployment QA**. Conserva íntegramente RC12 y cierra la metadata de producción para GitHub Pages sin modificar UI, motion ni responsive.
+
+**Sitio publicado:** https://apuexe.github.io/Portafolio/
 
 ## V1.1 — SIGNAL → CLARITY
 
@@ -90,7 +92,7 @@ La QA de esta release está documentada en `V2.13_LITE_QA.md`.
 
 ## Siguiente fase
 
-Después de RC12, el cierre de release debe hacerse sobre la URL pública definitiva: canonical y URLs sociales absolutas, Lighthouse, Axe y Core Web Vitals en producción.
+RC13 fija la URL pública definitiva de GitHub Pages en canonical y metadata social absoluta. Lighthouse, Axe y Core Web Vitals quedan como medición externa sobre el sitio servido, sin modificar la experiencia hasta disponer de evidencia real.
 
 **Contacto:** luis.sabrera@studios-tkoh.online  
 **Ubicación:** Lima, Perú
@@ -199,3 +201,14 @@ Ver detalle técnico en `V1.1_RC5_MOBILE_AND_CHOREOGRAPHY_QA.md`.
 - `assets/images/ls-top-icon.png` se conserva como fuente de QA del favicon, pero no forma parte del runtime del documento.
 - Canonical y URLs sociales absolutas quedan deliberadamente pendientes hasta confirmar la URL pública definitiva.
 - QA específica: `V1.1_RC12_PRODUCTION_READINESS_QA.md` y `tests/test_rc12_production_readiness.py`.
+
+## V1.1 RC13 — Live Deployment QA
+
+- GitHub Pages activo sobre `main`, sin `CNAME`; URL canónica: `https://apuexe.github.io/Portafolio/`.
+- `canonical` y `og:url` apuntan a la URL pública definitiva.
+- `og:image` y `twitter:image` usan URL absoluta HTTPS para compartir correctamente fuera del sitio.
+- Se valida que todos los assets locales referenciados por `index.html` existan en el paquete.
+- No cambia CSS, JavaScript, layout, responsive, contenido visible ni motion.
+- Lighthouse, Axe y Core Web Vitals requieren medición contra la URL servida y no se reportan como ejecutados desde este entorno.
+- QA específica: `V1.1_RC13_LIVE_DEPLOYMENT_QA.md` y `tests/test_rc13_live_deployment_metadata.py`.
+
