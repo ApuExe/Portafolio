@@ -14,6 +14,15 @@ html.intro-pending body {
   min-height: 100%;
 }
 
+/* V1.2 RC2.1: keep the cinematic intro anchored to the first viewport. */
+html.intro-pending,
+html.intro-running,
+html.intro-pending body,
+html.intro-running body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 html.intro-pending .topbar,
 html.intro-pending .hero-grid,
 html.intro-pending .signal-strip,
