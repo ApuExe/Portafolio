@@ -29,8 +29,8 @@ def test_social_images_use_absolute_production_urls():
     assert twitter_image and twitter_image.get('content') == SOCIAL_IMAGE
 
 
-def test_readme_declares_rc13_and_live_pages_url():
-    assert 'La base activa es **V1.1 RC13 · Live Deployment QA**' in README
+def test_readme_preserves_rc13_release_documentation_and_live_pages_url():
+    assert '## V1.1 RC13 — Live Deployment QA' in README
     assert LIVE_URL in README
 
 

@@ -1,12 +1,21 @@
-# Luis Sabrera — Portfolio V1.1 · SIGNAL → CLARITY
+# Luis Sabrera — Portfolio V1.2 RC1 · TKOH Evidence & Clarity
 
 Portafolio editorial e interactivo de Luis Sabrera. La identidad se mantiene: blanco/negro/neutros, azul de señal, Inter + DM Mono, líneas estructurales, tipografía grande y evidencia real.
 
 ## Estado actual
 
-La base activa es **V1.1 RC13 · Live Deployment QA**. Conserva íntegramente RC12 y cierra la metadata de producción para GitHub Pages sin modificar UI, motion ni responsive.
+La base de desarrollo es **V1.2 RC1 · TKOH Evidence & Clarity**. La release estable publicada continúa siendo **v1.1.0 · SIGNAL → CLARITY**; V1.2 inicia una evolución de evidencia y jerarquía narrativa sin cambiar la identidad del portafolio.
 
-**Sitio publicado:** https://apuexe.github.io/Portafolio/
+**Sitio publicado (estable V1.1):** https://apuexe.github.io/Portafolio/
+
+## V1.2 RC1 — TKOH Evidence & Clarity
+
+- Studios TKOH / CR Master pasa de una lectura tipo galería a una columna vertebral de evidencia: **Contexto → Problema → Responsabilidad → Criterios → Decisiones → Sistema → Evidencia**.
+- Prospectos V2 funciona como evidencia principal; Cliente 360 y Resumen demuestran decisiones complementarias.
+- Mi Trabajo, Empresas y Actividades se agrupan como evidencia compacta de continuidad del sistema, no como tres pantallas hero independientes.
+- Se diferencia explícitamente criterio aplicado, intención de diseño y evidencia estructural; no se inventan research, métricas ni ownership.
+- El dialecto **Build the System**, los assets reales, el modal del Manual Comercial y la identidad `SIGNAL → CLARITY` se conservan.
+- QA específica: `V1.2_RC1_TKOH_EVIDENCE_CLARITY_QA.md`, `tests/test_v12_tkoh_evidence_clarity.py` y `tests/test_v12_tkoh_layout_runtime.py`.
 
 ## V1.1 — SIGNAL → CLARITY
 
@@ -92,7 +101,7 @@ La QA de esta release está documentada en `V2.13_LITE_QA.md`.
 
 ## Siguiente fase
 
-RC13 fija la URL pública definitiva de GitHub Pages en canonical y metadata social absoluta. Lighthouse, Axe y Core Web Vitals quedan como medición externa sobre el sitio servido, sin modificar la experiencia hasta disponer de evidencia real.
+Tras validar RC1, V1.2 continúa con Amazon Magic Park aplicando la misma disciplina de evidencia sin copiar mecánicamente la estructura de TKOH. 20 Prod. y SUNAFIL se evaluarán después como capítulos complementarios más compactos.
 
 **Contacto:** luis.sabrera@studios-tkoh.online  
 **Ubicación:** Lima, Perú

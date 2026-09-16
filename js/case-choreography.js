@@ -182,7 +182,7 @@
       stage.addEventListener('pointerleave', () => setDepth(), { passive: true });
     }
 
-    const evidence = tkoh.querySelectorAll('.exp-evidence, .exp-sequence-list article, .exp-sequence-images figure');
+    const evidence = tkoh.querySelectorAll('.tkoh-context-grid, .tkoh-criteria, .exp-evidence, .tkoh-scale-card, .tkoh-current-evidence, .exp-resource-line');
     observeOnce(evidence, (node, index) => {
       animate(node, [
         { opacity: 0, transform: `translate3d(${compact ? 0 : (index % 2 ? 18 : -18)}px,${compact ? 14 : 22}px,0)` },

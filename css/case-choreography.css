@@ -308,7 +308,7 @@
   #case-tkoh .exp-stage-product:hover .exp-product-shot img {
     transform: translate3d(var(--tkoh-depth-x), var(--tkoh-depth-y), 0) scale(1.024);
   }
-  #case-tkoh .exp-sequence-images figure:hover {
+  #case-tkoh .tkoh-scale-card:hover {
     transform: translateY(-5px);
   }
 }
