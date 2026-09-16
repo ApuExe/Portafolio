@@ -4,7 +4,7 @@ Portafolio editorial e interactivo de Luis Sabrera. La identidad se mantiene: bl
 
 ## Estado actual
 
-La base activa es **V1.1 RC10 · Mi Sistema Polish**. Conserva SIGNAL → CLARITY, los cuatro dialectos de caso, la zona segura de Mi Sistema, el cierre RC9 y el hotfix responsive RC9.1; RC10 refina únicamente el modelo de interacción de Mi Sistema sin alterar su composición visual.
+La base activa es **V1.1 RC12 · Production Readiness**. Conserva íntegramente la experiencia visual de RC11 y endurece únicamente entrega, metadata social y prioridades de carga antes de publicación.
 
 ## V1.1 — SIGNAL → CLARITY
 
@@ -90,7 +90,7 @@ La QA de esta release está documentada en `V2.13_LITE_QA.md`.
 
 ## Siguiente fase
 
-Después de validar RC10 en el sitio publicado, la siguiente fase es **RC11 · Global UX QA**: recorrido completo Hero → Selected Work → casos → Mi Sistema → Perfil → Contacto, priorizando coherencia, accesibilidad, responsive y performance antes de añadir nuevas capas visuales.
+Después de RC12, el cierre de release debe hacerse sobre la URL pública definitiva: canonical y URLs sociales absolutas, Lighthouse, Axe y Core Web Vitals en producción.
 
 **Contacto:** luis.sabrera@studios-tkoh.online  
 **Ubicación:** Lima, Perú
@@ -179,3 +179,23 @@ Ver detalle técnico en `V1.1_RC5_MOBILE_AND_CHOREOGRAPHY_QA.md`.
 - Las conexiones de experiencia real reciben una transición nativa corta (180–210 ms), desactivada con `prefers-reduced-motion`.
 - La región de proyectos deja de ser `aria-live`; los cambios confirmados se anuncian mediante el live status global para evitar ruido durante hover/focus.
 - QA específica: `V1.1_RC10_SYSTEM_POLISH_QA.md` y `tests/test_rc10_system_interaction.py`.
+
+## V1.1 RC11 — Global UX QA / Interaction Stability
+
+- Amplía las áreas táctiles efectivas de controles pequeños hasta 44 px sin cambiar su tamaño visual.
+- Cubre Mapa del perfil, navegación de regreso de casos, Vista previa / Abrir PDF, correo directo y Volver arriba.
+- Mantiene foco visible, teclado, responsive, paleta, tipografía y composición de RC10.
+- La ampliación se implementa con hit areas transparentes; las cajas visuales RC10 → RC11 permanecen idénticas.
+- QA específica: `V1.1_RC11_GLOBAL_UX_QA.md` y `tests/test_rc11_interaction_stability.py`.
+
+
+## V1.1 RC12 — Production Readiness
+
+- Mantiene intactos layout, dirección de arte, SIGNAL → CLARITY, motion, responsive e interacción de RC11.
+- La primera captura de CR Master deja de competir con la ruta crítica: `loading="lazy"` + `decoding="async"`.
+- Todas las imágenes lazy de contenido usan decodificación asíncrona.
+- Se incorpora `assets/images/social-preview.jpg` (1200×630) y metadata Open Graph / Twitter para preview social.
+- Se preservan los `preconnect` existentes de Google Fonts; no se añaden hints redundantes.
+- `assets/images/ls-top-icon.png` se conserva como fuente de QA del favicon, pero no forma parte del runtime del documento.
+- Canonical y URLs sociales absolutas quedan deliberadamente pendientes hasta confirmar la URL pública definitiva.
+- QA específica: `V1.1_RC12_PRODUCTION_READINESS_QA.md` y `tests/test_rc12_production_readiness.py`.

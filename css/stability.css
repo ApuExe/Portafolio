@@ -853,3 +853,31 @@ body.is-in-experiences .experience-rail {
     min-width: 0;
   }
 }
+
+/* ============================================================
+   V1.1 RC11 — GLOBAL UX QA / INTERACTION STABILITY
+   Expand touch targets without changing the visible control footprint.
+   ============================================================ */
+[data-profile-map-close],
+.exp-head a,
+.exp-resource-actions button,
+.exp-resource-actions a,
+.contact-direct-email,
+footer a[href="#top"] {
+  position: relative;
+}
+
+[data-profile-map-close]::after,
+.exp-head a::after,
+.exp-resource-actions button::after,
+.exp-resource-actions a::after,
+.contact-direct-email::after,
+footer a[href="#top"]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 44px);
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
